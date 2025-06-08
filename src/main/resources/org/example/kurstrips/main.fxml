@@ -5,7 +5,11 @@
 <?import javafx.scene.web.*?>
 
 <?import javafx.geometry.Insets?>
-<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.kurstrips.HelloController" spacing="10">
+<VBox xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.kurstrips.controller.MainController"
+      spacing="10">
+
   <padding>
     <Insets top="10" right="10" bottom="10" left="10"/>
   </padding>
@@ -13,11 +17,12 @@
   <HBox spacing="10" alignment="CENTER_LEFT">
     <TextField fx:id="startField" promptText="Откуда (адрес)" prefWidth="300"/>
     <TextField fx:id="endField" promptText="Куда (адрес)" prefWidth="300"/>
-    <Button fx:id="buildRouteBtn" text="Построить маршрут"/>
-    <Button text="Тест" onAction="#testButtonClicked"/>
-    <Button text="ТестБаз" onAction="#testMap"/>
+    <Button fx:id="buildRouteBtn" text="Построить прямой маршрут"/>
+    <Button fx:id="buildOptimalRouteBtn" text="Построить оптимальный маршрут"/>
   </HBox>
 
+  <Label fx:id="routeInfoLabel" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+  <VBox fx:id="citiesListContainer" spacing="5" style="-fx-padding: 0 0 0 20;"/>
 
   <WebView fx:id="webView" prefHeight="500" VBox.vgrow="ALWAYS"/>
 </VBox>
