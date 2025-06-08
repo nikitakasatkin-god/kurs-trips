@@ -6,12 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class HelloApplication extends Application {
+public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+        // Исправленный путь к FXML файлу
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/kurstrips/main.fxml"));
+        Parent root = loader.load();
+
         primaryStage.setTitle("Яндекс Карты - Оптимальный маршрут");
-        primaryStage.setScene(new Scene(root, 1000, 700));
+        primaryStage.setScene(new Scene(root, 1200, 700));
         primaryStage.show();
     }
 

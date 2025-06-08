@@ -6,4 +6,6 @@ module org.example.kurstrips {
 
     opens org.example.kurstrips to javafx.fxml;
     exports org.example.kurstrips;
+    exports org.example.kurstrips.controller;
+    opens org.example.kurstrips.controller to javafx.fxml;
 }
