@@ -13,19 +13,18 @@ public class SQLiteTripDAO implements TripDAO {
 
     public SQLiteTripDAO() {
         try {
-            // Загрузка драйвера
             Class.forName("org.sqlite.JDBC");
-            // Подключение к базе данных (файл будет создан автоматически)
-            conn = DriverManager.getConnection("jdbc:sqlite:trips.db");
-            // Проверка соединения
+            // Указываем явный путь к файлу БД
+            String dbPath = System.getProperty("user.dir") + "/trips.db";
+            System.out.println("Database path: " + dbPath);
+            conn = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+
             if (conn != null) {
+                System.out.println("Connected to database");
                 initializeDatabase();
             }
-        } catch (ClassNotFoundException e) {
-            System.err.println("SQLite JDBC драйвер не найден. Добавьте зависимость в pom.xml");
-            e.printStackTrace();
-        } catch (SQLException e) {
-            System.err.println("Ошибка подключения к SQLite:");
+        } catch (Exception e) {
+            System.err.println("Error connecting to database:");
             e.printStackTrace();
         }
     }
@@ -61,32 +60,24 @@ public class SQLiteTripDAO implements TripDAO {
     @Override
     public List<Trip> getAllTrips() {
         List<Trip> trips = new ArrayList<>();
-        if (conn == null) {
-            System.err.println("Нет подключения к базе данных");
-            return trips;
-        }
+        if (conn == null) return trips;
 
         String sql = """
-            SELECT t.*, r.id as review_id, r.rating, r.comment 
-            FROM trips t LEFT JOIN reviews r ON t.id = r.trip_id""";
+        SELECT t.id, t.from_city, t.to_city, t.start_date, t.end_date, t.budget, t.status,
+               r.id as review_id, r.trip_id as review_trip_id, r.rating, r.comment 
+        FROM trips t LEFT JOIN reviews r ON t.id = r.trip_id
+        ORDER BY t.start_date DESC""";
 
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                Trip trip = new Trip(
-                        rs.getInt("id"),
-                        rs.getString("from_city"),
-                        rs.getString("to_city"),
-                        LocalDate.parse(rs.getString("start_date")),
-                        LocalDate.parse(rs.getString("end_date")),
-                        rs.getDouble("budget")
-                );
+                Trip trip = mapResultSetToTrip(rs);
 
                 if (rs.getInt("review_id") != 0) {
                     trip.setReview(new Review(
                             rs.getInt("review_id"),
-                            rs.getInt("trip_id"),
+                            rs.getInt("review_trip_id"),  // Используем правильное имя столбца
                             rs.getInt("rating"),
                             rs.getString("comment")
                     ));
@@ -185,10 +176,24 @@ public class SQLiteTripDAO implements TripDAO {
     }
 
     @Override
+    public void updateReview(int reviewId, int rating, String comment) throws SQLException {
+        String sql = "UPDATE reviews SET rating = ?, comment = ? WHERE id = ?";
+
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, rating);
+            pstmt.setString(2, comment);
+            pstmt.setInt(3, reviewId);
+            pstmt.executeUpdate();
+        }
+    }
+
+    @Override
     public Trip getTripById(int id) {
-        String sql = "SELECT t.*, r.id as review_id, r.rating, r.comment " +
-                "FROM trips t LEFT JOIN reviews r ON t.id = r.trip_id " +
-                "WHERE t.id = ?";
+        String sql = """
+        SELECT t.id, t.from_city, t.to_city, t.start_date, t.end_date, t.budget, t.status,
+               r.id as review_id, r.trip_id as review_trip_id, r.rating, r.comment 
+        FROM trips t LEFT JOIN reviews r ON t.id = r.trip_id 
+        WHERE t.id = ?""";
 
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, id);
@@ -198,13 +203,12 @@ public class SQLiteTripDAO implements TripDAO {
                     Trip trip = mapResultSetToTrip(rs);
 
                     if (rs.getInt("review_id") != 0) {
-                        Review review = new Review(
+                        trip.setReview(new Review(
                                 rs.getInt("review_id"),
-                                rs.getInt("trip_id"),
+                                rs.getInt("review_trip_id"),
                                 rs.getInt("rating"),
                                 rs.getString("comment")
-                        );
-                        trip.setReview(review);
+                        ));
                     }
                     return trip;
                 }
