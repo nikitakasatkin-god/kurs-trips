@@ -5,6 +5,7 @@
 <?import javafx.scene.web.*?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <TabPane fx:id="tabPane" xmlns="http://javafx.com/javafx/11.0.1"
          xmlns:fx="http://javafx.com/fxml/1"
          fx:controller="org.example.kurstrips.controller.MainController">
@@ -45,35 +46,39 @@
         <Insets top="10" right="10" bottom="10" left="10"/>
       </padding>
 
-      <TableView fx:id="tripsTable" prefHeight="300">
+      <Label text="Все поездки:" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+      <TableView fx:id="tripsTable" prefHeight="250">
         <columns>
-          <TableColumn fx:id="fromCityColumn" text="Откуда"/>
-          <TableColumn fx:id="toCityColumn" text="Куда"/>
-          <TableColumn fx:id="datesColumn" text="Даты"/>
-          <TableColumn fx:id="budgetColumn" text="Бюджет"/>
-          <TableColumn fx:id="statusColumn" text="Статус"/>
-          <!-- Добавляем колонку для оценки -->
-          <TableColumn fx:id="ratingColumn" text="Оценка"/>
+          <TableColumn fx:id="fromCityColumn" text="Откуда" prefWidth="150"/>
+          <TableColumn fx:id="toCityColumn" text="Куда" prefWidth="150"/>
+          <TableColumn fx:id="datesColumn" text="Даты" prefWidth="200"/>
+          <TableColumn fx:id="budgetColumn" text="Бюджет" prefWidth="100"/>
+          <TableColumn fx:id="statusColumn" text="Статус" prefWidth="100"/>
+          <TableColumn fx:id="ratingColumn" text="Оценка" prefWidth="80"/>
         </columns>
       </TableView>
 
-      <!-- Добавляем новую таблицу для отзывов -->
       <Label text="Отзывы:" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
-      <TableView fx:id="reviewsTable" prefHeight="200">
+      <TableView fx:id="reviewsTable" prefHeight="150">
         <columns>
-          <TableColumn fx:id="tripRouteColumn" text="Маршрут"/>
-          <TableColumn fx:id="reviewRatingColumn" text="Оценка"/>
-          <TableColumn fx:id="reviewCommentColumn" text="Отзыв"/>
+          <TableColumn fx:id="tripRouteColumn" text="Маршрут" prefWidth="200"/>
+          <TableColumn fx:id="reviewRatingColumn" text="Оценка" prefWidth="80">
+            <cellValueFactory>
+              <PropertyValueFactory property="rating" />
+            </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="reviewCommentColumn" text="Отзыв" prefWidth="400"/>
         </columns>
       </TableView>
 
       <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Оценка:"/>
         <Slider fx:id="ratingSlider" min="1" max="5" value="3" showTickLabels="true"
-                showTickMarks="true" majorTickUnit="1" minorTickCount="0" snapToTicks="true"/>
-        <Label text="Отзыв (необязательно):"/>
-        <TextArea fx:id="reviewTextArea" promptText="Ваш отзыв" prefWidth="300"/>
-        <Button fx:id="submitReviewButton" text="Добавить отзыв"/>
+                showTickMarks="true" majorTickUnit="1" minorTickCount="0" snapToTicks="true"
+                prefWidth="150"/>
+        <Label text="Отзыв:"/>
+        <TextArea fx:id="reviewTextArea" promptText="Ваш отзыв" prefWidth="300" prefHeight="60"/>
+        <Button fx:id="submitReviewButton" text="Добавить отзыв" style="-fx-font-weight: bold;"/>
       </HBox>
     </VBox>
   </Tab>

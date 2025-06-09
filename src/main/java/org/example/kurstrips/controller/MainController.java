@@ -54,6 +54,7 @@ public class MainController {
     private final CityService cityService = new CityService();
     private final TripDAO tripDAO = new SQLiteTripDAO();
     private final ObservableList<Trip> trips = FXCollections.observableArrayList();
+    private final ObservableList<Review> allReviews = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
@@ -73,6 +74,10 @@ public class MainController {
                         cellData.getValue().getEndDate()));
         budgetColumn.setCellValueFactory(cellData -> cellData.getValue().budgetProperty());
         statusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+        ratingColumn.setCellValueFactory(cellData -> {
+            Review review = cellData.getValue().getReview();
+            return review != null ? review.ratingProperty() : new SimpleIntegerProperty(0);
+        });
 
         tripsTable.setItems(trips);
         loadTrips();
@@ -85,23 +90,92 @@ public class MainController {
 
         // Настройка таблицы отзывов
         tripRouteColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getTripId() + ": " +
-                        getTripRoute(cellData.getValue().getTripId())));
+                new SimpleStringProperty(getTripRoute(cellData.getValue().getTripId())));
         reviewRatingColumn.setCellValueFactory(cellData -> cellData.getValue().ratingProperty());
         reviewCommentColumn.setCellValueFactory(cellData -> cellData.getValue().commentProperty());
 
-        // Обновляем таблицу отзывов при выборе поездки
+        // Загрузка данных при инициализации
+        loadAllData();
+
+        // Выделение первой поездки по умолчанию
+        if (!trips.isEmpty()) {
+            tripsTable.getSelectionModel().selectFirst();
+        }
+
+        // Загрузка данных при старте
+        refreshAllData();
+
+        // Обновление таблицы отзывов при выборе поездки
         tripsTable.getSelectionModel().selectedItemProperty().addListener(
-                (obs, oldSelection, newSelection) -> updateReviewsTable());
+                (obs, oldSelection, newSelection) -> updateReviewsForSelectedTrip()
+        );
+
+        // Выделение первой поездки если есть
+        if (!trips.isEmpty()) {
+            tripsTable.getSelectionModel().selectFirst();
+        }
+    }
+
+    private void refreshAllData() {
+        try {
+            // Полная перезагрузка данных из БД
+            List<Trip> allTrips = tripDAO.getAllTrips();
+            trips.setAll(allTrips);
+
+            // Обновление всех отзывов
+            allReviews.clear();
+            for (Trip trip : allTrips) {
+                if (trip.getReview() != null) {
+                    allReviews.add(trip.getReview());
+                }
+            }
+
+            // Обновление таблиц
+            tripsTable.refresh();
+            reviewsTable.setItems(allReviews); // Показываем все отзывы
+
+            System.out.println("Data refreshed. Trips: " + trips.size() +
+                    ", Reviews: " + allReviews.size());
+        } catch (Exception e) {
+            System.err.println("Error refreshing data:");
+            e.printStackTrace();
+            showAlert("Ошибка", "Ошибка загрузки данных",
+                    "Не удалось загрузить данные из базы данных");
+        }
+    }
+
+    private void loadAllData() {
+        loadTrips();
+        loadAllReviews();
+    }
+
+    private void loadAllReviews() {
+        allReviews.clear();
+        for (Trip trip : trips) {
+            if (trip.getReview() != null) {
+                allReviews.add(trip.getReview());
+            }
+        }
+        reviewsTable.setItems(allReviews);
+    }
+
+    private void updateReviewsForSelectedTrip() {
+        Trip selectedTrip = tripsTable.getSelectionModel().getSelectedItem();
+        if (selectedTrip != null) {
+            ObservableList<Review> filteredReviews = FXCollections.observableArrayList();
+            if (selectedTrip.getReview() != null) {
+                filteredReviews.add(selectedTrip.getReview());
+            }
+            reviewsTable.setItems(filteredReviews);
+        }
     }
 
     private String getTripRoute(int tripId) {
-        for (Trip trip : trips) {
-            if (trip.getId() == tripId) {
-                return trip.getFromCity() + " - " + trip.getToCity();
-            }
-        }
-        return "Неизвестный маршрут";
+        return trips.stream()
+                .filter(trip -> trip.getId() == tripId)
+                .findFirst()
+                .map(trip -> trip.getFromCity() + " → " + trip.getToCity())
+                .orElse("Неизвестный маршрут");
     }
 
     private void updateReviewsTable() {
@@ -157,36 +231,39 @@ public class MainController {
         int rating = (int) ratingSlider.getValue();
         String comment = reviewTextArea.getText().trim();
 
-        if (rating < 1 || rating > 5) {
-            showAlert("Ошибка", "Некорректная оценка", "Оценка должна быть от 1 до 5");
-            return;
-        }
-
         try {
-            // Добавляем отзыв в базу данных
-            tripDAO.addReview(selectedTrip.getId(), rating, comment);
+            // Добавление/обновление отзыва
+            if (selectedTrip.getReview() != null) {
+                tripDAO.updateReview(selectedTrip.getReview().getId(), rating, comment);
+            } else {
+                tripDAO.addReview(selectedTrip.getId(), rating, comment);
+            }
 
-            // Обновляем отзыв в выбранной поездке
-            Review review = new Review(0, selectedTrip.getId(), rating, comment);
-            selectedTrip.setReview(review);
+            // Полная перезагрузка данных
+            refreshAllData();
 
-            // Обновляем отображение таблиц
-            tripsTable.refresh();
-            updateReviewsTable();
+            // Восстановление выбора
+            for (Trip trip : trips) {
+                if (trip.getId() == selectedTrip.getId()) {
+                    tripsTable.getSelectionModel().select(trip);
+                    break;
+                }
+            }
 
-            // Очищаем поля ввода
+            // Очистка полей
             ratingSlider.setValue(3);
             reviewTextArea.clear();
 
-            showAlert("Успех", "Отзыв добавлен", "Ваш отзыв успешно сохранен");
         } catch (Exception e) {
-            showAlert("Ошибка", "Ошибка базы данных", "Не удалось сохранить отзыв: " + e.getMessage());
+            showAlert("Ошибка", "Ошибка базы данных",
+                    "Не удалось сохранить отзыв: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     private void loadTrips() {
         trips.setAll(tripDAO.getAllTrips());
+        tripsTable.setItems(trips);
     }
 
     private void clearTripFields() {
