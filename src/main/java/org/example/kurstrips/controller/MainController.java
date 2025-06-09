@@ -1,5 +1,6 @@
 package org.example.kurstrips.controller;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,6 +44,12 @@ public class MainController {
     @FXML private TextArea reviewTextArea;
     @FXML private Button submitReviewButton;
 
+    @FXML private TableView<Review> reviewsTable;
+    @FXML private TableColumn<Review, String> tripRouteColumn;
+    @FXML private TableColumn<Review, Number> reviewRatingColumn;
+    @FXML private TableColumn<Review, String> reviewCommentColumn;
+    @FXML private TableColumn<Trip, Number> ratingColumn;
+
     private final MapService mapService = new YandexMapServiceImpl();
     private final CityService cityService = new CityService();
     private final TripDAO tripDAO = new SQLiteTripDAO();
@@ -69,6 +76,41 @@ public class MainController {
 
         tripsTable.setItems(trips);
         loadTrips();
+
+        // Настройка новой колонки с рейтингом в таблице поездок
+        ratingColumn.setCellValueFactory(cellData -> {
+            Review review = cellData.getValue().getReview();
+            return review != null ? review.ratingProperty() : new SimpleIntegerProperty(0);
+        });
+
+        // Настройка таблицы отзывов
+        tripRouteColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getTripId() + ": " +
+                        getTripRoute(cellData.getValue().getTripId())));
+        reviewRatingColumn.setCellValueFactory(cellData -> cellData.getValue().ratingProperty());
+        reviewCommentColumn.setCellValueFactory(cellData -> cellData.getValue().commentProperty());
+
+        // Обновляем таблицу отзывов при выборе поездки
+        tripsTable.getSelectionModel().selectedItemProperty().addListener(
+                (obs, oldSelection, newSelection) -> updateReviewsTable());
+    }
+
+    private String getTripRoute(int tripId) {
+        for (Trip trip : trips) {
+            if (trip.getId() == tripId) {
+                return trip.getFromCity() + " - " + trip.getToCity();
+            }
+        }
+        return "Неизвестный маршрут";
+    }
+
+    private void updateReviewsTable() {
+        Trip selectedTrip = tripsTable.getSelectionModel().getSelectedItem();
+        if (selectedTrip != null && selectedTrip.getReview() != null) {
+            reviewsTable.setItems(FXCollections.observableArrayList(selectedTrip.getReview()));
+        } else {
+            reviewsTable.setItems(FXCollections.emptyObservableList());
+        }
     }
 
     private void addTrip() {
@@ -128,8 +170,9 @@ public class MainController {
             Review review = new Review(0, selectedTrip.getId(), rating, comment);
             selectedTrip.setReview(review);
 
-            // Обновляем отображение таблицы
+            // Обновляем отображение таблиц
             tripsTable.refresh();
+            updateReviewsTable();
 
             // Очищаем поля ввода
             ratingSlider.setValue(3);

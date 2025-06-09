@@ -52,6 +52,18 @@
           <TableColumn fx:id="datesColumn" text="Даты"/>
           <TableColumn fx:id="budgetColumn" text="Бюджет"/>
           <TableColumn fx:id="statusColumn" text="Статус"/>
+          <!-- Добавляем колонку для оценки -->
+          <TableColumn fx:id="ratingColumn" text="Оценка"/>
+        </columns>
+      </TableView>
+
+      <!-- Добавляем новую таблицу для отзывов -->
+      <Label text="Отзывы:" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+      <TableView fx:id="reviewsTable" prefHeight="200">
+        <columns>
+          <TableColumn fx:id="tripRouteColumn" text="Маршрут"/>
+          <TableColumn fx:id="reviewRatingColumn" text="Оценка"/>
+          <TableColumn fx:id="reviewCommentColumn" text="Отзыв"/>
         </columns>
       </TableView>
 
