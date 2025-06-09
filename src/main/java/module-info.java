@@ -3,6 +3,7 @@ module org.example.kurstrips {
     requires javafx.fxml;
     requires javafx.web;
     requires java.net.http;
+    requires java.sql;
 
     opens org.example.kurstrips to javafx.fxml;
     exports org.example.kurstrips;

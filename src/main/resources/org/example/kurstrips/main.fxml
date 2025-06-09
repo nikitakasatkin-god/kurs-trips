@@ -5,24 +5,64 @@
 <?import javafx.scene.web.*?>
 
 <?import javafx.geometry.Insets?>
-<VBox xmlns="http://javafx.com/javafx/11.0.1"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.example.kurstrips.controller.MainController"
-      spacing="10">
+<TabPane fx:id="tabPane" xmlns="http://javafx.com/javafx/11.0.1"
+         xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="org.example.kurstrips.controller.MainController">
 
-  <padding>
-    <Insets top="10" right="10" bottom="10" left="10"/>
-  </padding>
+  <Tab text="Построение маршрута">
+    <VBox spacing="10">
+      <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+      </padding>
 
-  <HBox spacing="10" alignment="CENTER_LEFT">
-    <TextField fx:id="startField" promptText="Откуда (адрес)" prefWidth="300"/>
-    <TextField fx:id="endField" promptText="Куда (адрес)" prefWidth="300"/>
-    <Button fx:id="buildRouteBtn" text="Построить прямой маршрут"/>
-    <Button fx:id="buildOptimalRouteBtn" text="Построить оптимальный маршрут"/>
-  </HBox>
+      <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="startField" promptText="Откуда (адрес)" prefWidth="300"/>
+        <TextField fx:id="endField" promptText="Куда (адрес)" prefWidth="300"/>
+        <Button fx:id="buildRouteBtn" text="Построить прямой маршрут"/>
+        <Button fx:id="buildOptimalRouteBtn" text="Построить оптимальный маршрут"/>
+      </HBox>
 
-  <Label fx:id="routeInfoLabel" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
-  <VBox fx:id="citiesListContainer" spacing="5" style="-fx-padding: 0 0 0 20;"/>
+      <Label fx:id="routeInfoLabel" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+      <VBox fx:id="citiesListContainer" spacing="5" style="-fx-padding: 0 0 0 20;"/>
 
-  <WebView fx:id="webView" prefHeight="500" VBox.vgrow="ALWAYS"/>
-</VBox>
+      <WebView fx:id="webView" prefHeight="300" VBox.vgrow="ALWAYS"/>
+
+      <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Бюджет:"/>
+        <TextField fx:id="budgetField" promptText="Бюджет поездки" prefWidth="100"/>
+        <Label text="Дата начала:"/>
+        <DatePicker fx:id="startDatePicker" prefWidth="150"/>
+        <Label text="Дата окончания:"/>
+        <DatePicker fx:id="endDatePicker" prefWidth="150"/>
+        <Button fx:id="addTripButton" text="Добавить поездку"/>
+      </HBox>
+    </VBox>
+  </Tab>
+
+  <Tab text="Мои поездки">
+    <VBox spacing="10">
+      <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+      </padding>
+
+      <TableView fx:id="tripsTable" prefHeight="300">
+        <columns>
+          <TableColumn fx:id="fromCityColumn" text="Откуда"/>
+          <TableColumn fx:id="toCityColumn" text="Куда"/>
+          <TableColumn fx:id="datesColumn" text="Даты"/>
+          <TableColumn fx:id="budgetColumn" text="Бюджет"/>
+          <TableColumn fx:id="statusColumn" text="Статус"/>
+        </columns>
+      </TableView>
+
+      <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Оценка:"/>
+        <Slider fx:id="ratingSlider" min="1" max="5" value="3" showTickLabels="true"
+                showTickMarks="true" majorTickUnit="1" minorTickCount="0" snapToTicks="true"/>
+        <Label text="Отзыв (необязательно):"/>
+        <TextArea fx:id="reviewTextArea" promptText="Ваш отзыв" prefWidth="300"/>
+        <Button fx:id="submitReviewButton" text="Добавить отзыв"/>
+      </HBox>
+    </VBox>
+  </Tab>
+</TabPane>
