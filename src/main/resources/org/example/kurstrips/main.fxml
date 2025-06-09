@@ -3,83 +3,94 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.web.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.cell.*?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <TabPane fx:id="tabPane" xmlns="http://javafx.com/javafx/11.0.1"
          xmlns:fx="http://javafx.com/fxml/1"
-         fx:controller="org.example.kurstrips.controller.MainController">
+         fx:controller="org.example.kurstrips.controller.MainController"
+         style="-fx-background-color: #f0f0f0; -fx-padding: 5;">
 
-  <Tab text="Построение маршрута">
-    <VBox spacing="10">
-      <padding>
-        <Insets top="10" right="10" bottom="10" left="10"/>
-      </padding>
-
-      <HBox spacing="10" alignment="CENTER_LEFT">
-        <TextField fx:id="startField" promptText="Откуда (адрес)" prefWidth="300"/>
-        <TextField fx:id="endField" promptText="Куда (адрес)" prefWidth="300"/>
-        <Button fx:id="buildRouteBtn" text="Построить прямой маршрут"/>
-        <Button fx:id="buildOptimalRouteBtn" text="Построить оптимальный маршрут"/>
+  <Tab text="Маршрут">
+    <VBox spacing="10" style="-fx-padding: 10;">
+      <!-- Панель построения маршрута -->
+      <HBox spacing="10" alignment="CENTER">
+        <TextField fx:id="startField" promptText="Откуда" style="-fx-pref-width: 200;"/>
+        <TextField fx:id="endField" promptText="Куда" style="-fx-pref-width: 200;"/>
+        <Button fx:id="buildRouteBtn" text="Построить"
+                style="-fx-base: #4CAF50; -fx-text-fill: white;"/>
+        <Button fx:id="buildOptimalRouteBtn" text="Оптимальный"
+                style="-fx-base: #2196F3; -fx-text-fill: white;"/>
       </HBox>
 
-      <Label fx:id="routeInfoLabel" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
-      <VBox fx:id="citiesListContainer" spacing="5" style="-fx-padding: 0 0 0 20;"/>
+      <!-- Информация о маршруте -->
+      <Label fx:id="routeInfoLabel" style="-fx-font-weight: bold;"/>
+      <VBox fx:id="citiesListContainer" spacing="5" style="-fx-padding: 5;"/>
 
-      <WebView fx:id="webView" prefHeight="300" VBox.vgrow="ALWAYS"/>
+      <!-- Карта -->
+      <WebView fx:id="webView" prefHeight="300" style="-fx-border-color: #ddd; -fx-border-radius: 5;"/>
 
-      <HBox spacing="10" alignment="CENTER_LEFT">
-        <Label text="Бюджет:"/>
-        <TextField fx:id="budgetField" promptText="Бюджет поездки" prefWidth="100"/>
-        <Label text="Дата начала:"/>
-        <DatePicker fx:id="startDatePicker" prefWidth="150"/>
-        <Label text="Дата окончания:"/>
-        <DatePicker fx:id="endDatePicker" prefWidth="150"/>
-        <Button fx:id="addTripButton" text="Добавить поездку"/>
-      </HBox>
+      <!-- Добавление поездки -->
+      <GridPane hgap="10" vgap="10" style="-fx-padding: 10; -fx-background-color: #f9f9f9; -fx-border-radius: 5;">
+        <Label text="Новая поездка:" GridPane.columnSpan="2" style="-fx-font-weight: bold;"/>
+
+        <Label text="Бюджет:" GridPane.rowIndex="1"/>
+        <TextField fx:id="budgetField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Дата начала:" GridPane.rowIndex="2"/>
+        <DatePicker fx:id="startDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Дата окончания:" GridPane.rowIndex="3"/>
+        <DatePicker fx:id="endDatePicker" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Button fx:id="addTripButton" text="Добавить" GridPane.columnSpan="2" GridPane.rowIndex="4"
+                style="-fx-base: #9C27B0; -fx-text-fill: white;"/>
+      </GridPane>
     </VBox>
   </Tab>
 
-  <Tab text="Мои поездки">
-    <VBox spacing="10">
-      <padding>
-        <Insets top="10" right="10" bottom="10" left="10"/>
-      </padding>
-
-      <Label text="Все поездки:" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
-      <TableView fx:id="tripsTable" prefHeight="250">
+  <Tab text="Поездки">
+    <VBox spacing="10" style="-fx-padding: 10;">
+      <!-- Таблица поездок -->
+      <TableView fx:id="tripsTable" style="-fx-pref-height: 250;">
         <columns>
-          <TableColumn fx:id="fromCityColumn" text="Откуда" prefWidth="150"/>
-          <TableColumn fx:id="toCityColumn" text="Куда" prefWidth="150"/>
-          <TableColumn fx:id="datesColumn" text="Даты" prefWidth="200"/>
-          <TableColumn fx:id="budgetColumn" text="Бюджет" prefWidth="100"/>
-          <TableColumn fx:id="statusColumn" text="Статус" prefWidth="100"/>
-          <TableColumn fx:id="ratingColumn" text="Оценка" prefWidth="80"/>
+          <TableColumn fx:id="fromCityColumn" text="Откуда" style="-fx-pref-width: 120;"/>
+          <TableColumn fx:id="toCityColumn" text="Куда" style="-fx-pref-width: 120;"/>
+          <TableColumn fx:id="datesColumn" text="Даты" style="-fx-pref-width: 150;"/>
+          <TableColumn fx:id="budgetColumn" text="Бюджет" style="-fx-pref-width: 80;"/>
+          <TableColumn fx:id="statusColumn" text="Статус" style="-fx-pref-width: 100;"/>
+          <TableColumn fx:id="ratingColumn" text="Оценка" style="-fx-pref-width: 70;"/>
         </columns>
       </TableView>
 
-      <Label text="Отзывы:" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
-      <TableView fx:id="reviewsTable" prefHeight="150">
+      <!-- Таблица отзывов -->
+      <TableView fx:id="reviewsTable" style="-fx-pref-height: 150;">
         <columns>
-          <TableColumn fx:id="tripRouteColumn" text="Маршрут" prefWidth="200"/>
-          <TableColumn fx:id="reviewRatingColumn" text="Оценка" prefWidth="80">
+          <TableColumn fx:id="tripRouteColumn" text="Маршрут" style="-fx-pref-width: 150;"/>
+          <TableColumn fx:id="reviewRatingColumn" text="Оценка" style="-fx-pref-width: 70;">
             <cellValueFactory>
-              <PropertyValueFactory property="rating" />
+              <PropertyValueFactory property="rating"/>
             </cellValueFactory>
           </TableColumn>
-          <TableColumn fx:id="reviewCommentColumn" text="Отзыв" prefWidth="400"/>
+          <TableColumn fx:id="reviewCommentColumn" text="Отзыв" style="-fx-pref-width: 300;"/>
         </columns>
       </TableView>
 
-      <HBox spacing="10" alignment="CENTER_LEFT">
-        <Label text="Оценка:"/>
-        <Slider fx:id="ratingSlider" min="1" max="5" value="3" showTickLabels="true"
-                showTickMarks="true" majorTickUnit="1" minorTickCount="0" snapToTicks="true"
-                prefWidth="150"/>
-        <Label text="Отзыв:"/>
-        <TextArea fx:id="reviewTextArea" promptText="Ваш отзыв" prefWidth="300" prefHeight="60"/>
-        <Button fx:id="submitReviewButton" text="Добавить отзыв" style="-fx-font-weight: bold;"/>
-      </HBox>
+      <!-- Форма отзыва -->
+      <VBox spacing="10" style="-fx-padding: 10; -fx-background-color: #f9f9f9; -fx-border-radius: 5;">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+          <Label text="Оценка:"/>
+          <Slider fx:id="ratingSlider" min="1" max="5" value="3"
+                  showTickLabels="true" showTickMarks="true"
+                  majorTickUnit="1" minorTickCount="0" snapToTicks="true"
+                  style="-fx-pref-width: 150;"/>
+          <Label text="Отзыв:"/>
+          <TextArea fx:id="reviewTextArea" promptText="Ваш отзыв"
+                    style="-fx-pref-width: 300; -fx-pref-height: 60;"/>
+        </HBox>
+        <Button fx:id="submitReviewButton" text="Добавить отзыв"
+                style="-fx-base: #FF5722; -fx-text-fill: white;"/>
+      </VBox>
     </VBox>
   </Tab>
 </TabPane>
