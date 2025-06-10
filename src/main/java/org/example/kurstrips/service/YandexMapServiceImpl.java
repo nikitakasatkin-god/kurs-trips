@@ -1,5 +1,6 @@
 package org.example.kurstrips.service;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import javafx.scene.web.WebView;
 import org.example.kurstrips.model.City;
 import java.net.URI;
@@ -13,7 +14,23 @@ import org.example.kurstrips.util.LogUtil;
 
 public class YandexMapServiceImpl implements MapService {
     private static final Logger logger = LogUtil.getLogger(YandexMapServiceImpl.class);
-    private static final String API_KEY = "6c7d2a81-a74d-4900-bf75-abcecf1d2661";
+    private final String API_KEY;
+
+    public YandexMapServiceImpl() {
+        // Загружаем переменные окружения из .env файла
+        Dotenv dotenv = Dotenv.configure()
+                .ignoreIfMissing() // Игнорировать если файла нет
+                .load();
+
+        this.API_KEY = dotenv.get("YANDEX_MAPS_API_KEY");
+
+        if (this.API_KEY == null || this.API_KEY.isEmpty()) {
+            logger.log(Level.SEVERE, "Yandex Maps API key not found in .env file");
+            throw new IllegalStateException("Yandex Maps API key not configured in .env file");
+        }
+
+        logger.log(Level.INFO, "Yandex Maps API key loaded successfully");
+    }
 
     public String getApiKey() {
         return API_KEY;

@@ -5,6 +5,7 @@ module org.example.kurstrips {
     requires java.net.http;
     requires java.sql;
     requires java.logging;
+    requires io.github.cdimascio.dotenv.java;
 
     opens org.example.kurstrips to javafx.fxml;
     opens org.example.kurstrips.model to org.junit.jupiter;

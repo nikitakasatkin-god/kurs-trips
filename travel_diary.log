@@ -118,3 +118,141 @@ INFO: Завершение работы контроллера
 INFO: ???????? ?????????? ? ??
 июн. 11, 2025 12:55:32 AM org.example.kurstrips.controller.MainController shutdown
 INFO: Ресурсы освобождены
+июн. 11, 2025 2:05:48 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ????????????? DAO
+июн. 11, 2025 2:05:49 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ?????????? ? ??
+июн. 11, 2025 2:05:49 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ????????????? ?????? ??
+июн. 11, 2025 2:05:49 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ??????? ?? ???????
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.controller.MainController initialize
+INFO: Инициализация MainController
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Начало инициализации карты в WebView
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Карта успешно загружена в WebView
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.controller.MainController initialize
+INFO: Сервис карт успешно инициализирован
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Обновление всех данных
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Данные обновлены. Поездок: 12, Отзывов: 11
+июн. 11, 2025 2:05:51 AM org.example.kurstrips.controller.MainController initialize
+INFO: MainController успешно инициализирован
+июн. 11, 2025 2:06:04 AM org.example.kurstrips.controller.MainController shutdown
+INFO: Завершение работы контроллера
+июн. 11, 2025 2:06:04 AM org.example.kurstrips.dao.impl.SQLiteTripDAO close
+INFO: ???????? ?????????? ? ??
+июн. 11, 2025 2:06:04 AM org.example.kurstrips.controller.MainController shutdown
+INFO: Ресурсы освобождены
+июн. 11, 2025 2:14:31 AM org.example.kurstrips.service.YandexMapServiceImpl <init>
+INFO: Yandex Maps API key loaded successfully
+июн. 11, 2025 2:14:31 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ????????????? DAO
+июн. 11, 2025 2:14:31 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ?????????? ? ??
+июн. 11, 2025 2:14:31 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ????????????? ?????? ??
+июн. 11, 2025 2:14:31 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ??????? ?? ???????
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.controller.MainController initialize
+INFO: Инициализация MainController
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Начало инициализации карты в WebView
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Карта успешно загружена в WebView
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.controller.MainController initialize
+INFO: Сервис карт успешно инициализирован
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Обновление всех данных
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Данные обновлены. Поездок: 12, Отзывов: 11
+июн. 11, 2025 2:14:33 AM org.example.kurstrips.controller.MainController initialize
+INFO: MainController успешно инициализирован
+июн. 11, 2025 2:14:43 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Построение простого маршрута: Воронеж -> 
+июн. 11, 2025 2:14:43 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+WARNING: Не заполнены поля маршрута
+июн. 11, 2025 2:14:43 AM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Не заполнены поля - Введите оба адреса
+июн. 11, 2025 2:14:48 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Построение простого маршрута: Воронеж -> Москва
+июн. 11, 2025 2:14:48 AM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Начало построения маршрута от {0} до {1}
+июн. 11, 2025 2:14:48 AM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Скрипт построения маршрута успешно выполнен
+июн. 11, 2025 2:14:48 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Прямой маршрут успешно построен
+июн. 11, 2025 2:15:02 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Построение простого маршрута: Москва -> Санкт-Петербург
+июн. 11, 2025 2:15:02 AM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Начало построения маршрута от {0} до {1}
+июн. 11, 2025 2:15:02 AM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Скрипт построения маршрута успешно выполнен
+июн. 11, 2025 2:15:02 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Прямой маршрут успешно построен
+июн. 11, 2025 2:15:08 AM org.example.kurstrips.controller.MainController buildOptimalRoute
+INFO: Построение оптимального маршрута: Москва -> Санкт-Петербург
+июн. 11, 2025 2:15:08 AM org.example.kurstrips.service.YandexMapServiceImpl geocode
+INFO: Начало геокодирования адреса: Москва
+июн. 11, 2025 2:15:08 AM org.example.kurstrips.service.YandexMapServiceImpl geocode
+INFO: Начало геокодирования адреса: Санкт-Петербург
+июн. 11, 2025 2:15:08 AM org.example.kurstrips.service.YandexMapServiceImpl displayRouteWithCities
+INFO: Отображение маршрута через 8 промежуточных городов
+июн. 11, 2025 2:15:08 AM org.example.kurstrips.service.YandexMapServiceImpl displayRouteWithCities
+INFO: Маршрут с промежуточными городами успешно отображен
+июн. 11, 2025 2:15:08 AM org.example.kurstrips.controller.MainController buildOptimalRoute
+INFO: Оптимальный маршрут построен через 8 городов
+июн. 11, 2025 2:15:12 AM org.example.kurstrips.controller.MainController addTrip
+INFO: Добавление новой поездки
+июн. 11, 2025 2:15:12 AM org.example.kurstrips.controller.MainController addTrip
+WARNING: Некорректный формат бюджета: 
+июн. 11, 2025 2:15:12 AM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Некорректный бюджет - Введите корректную сумму бюджета
+июн. 11, 2025 2:15:15 AM org.example.kurstrips.controller.MainController shutdown
+INFO: Завершение работы контроллера
+июн. 11, 2025 2:15:15 AM org.example.kurstrips.dao.impl.SQLiteTripDAO close
+INFO: ???????? ?????????? ? ??
+июн. 11, 2025 2:15:15 AM org.example.kurstrips.controller.MainController shutdown
+INFO: Ресурсы освобождены
