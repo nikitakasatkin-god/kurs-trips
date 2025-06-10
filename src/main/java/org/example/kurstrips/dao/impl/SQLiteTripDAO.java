@@ -11,19 +11,34 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.example.kurstrips.util.LogUtil;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class SQLiteTripDAO implements TripDAO {
     private static final Logger logger = LogUtil.getLogger(SQLiteTripDAO.class);
     private Connection conn;
+    private static final Dotenv dotenv = Dotenv.configure().load();
 
     public SQLiteTripDAO() {
         logger.log(Level.INFO, LogUtil.getMessage("dao.init"));
         try {
-            Class.forName("org.sqlite.JDBC");
-            String dbPath = System.getProperty("user.dir") + "/trips.db";
+            // Загрузка параметров из .env файла
+            String driver = dotenv.get("DB_DRIVER", "org.sqlite.JDBC");
+            String url = dotenv.get("DB_URL", "jdbc:sqlite:trips.db");
+            String user = dotenv.get("DB_USER");
+            String password = dotenv.get("DB_PASSWORD");
+
+            // Подстановка user.dir в URL если нужно
+            url = url.replace("${user.dir}", System.getProperty("user.dir"));
+
+            Class.forName(driver);
             logger.log(Level.CONFIG,
-                    MessageFormat.format(LogUtil.getMessage("dao.db.path"), dbPath));
-            conn = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+                    MessageFormat.format(LogUtil.getMessage("dao.db.path"), url));
+
+            if (user != null && !user.isEmpty() && password != null) {
+                conn = DriverManager.getConnection(url, user, password);
+            } else {
+                conn = DriverManager.getConnection(url);
+            }
 
             if (conn != null) {
                 logger.log(Level.INFO, LogUtil.getMessage("dao.connected"));
