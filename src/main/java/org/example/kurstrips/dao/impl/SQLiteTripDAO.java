@@ -4,28 +4,34 @@ import org.example.kurstrips.dao.TripDAO;
 import org.example.kurstrips.model.Trip;
 import org.example.kurstrips.model.Review;
 import java.sql.*;
+import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.example.kurstrips.util.LogUtil;
 
 public class SQLiteTripDAO implements TripDAO {
+    private static final Logger logger = LogUtil.getLogger(SQLiteTripDAO.class);
     private Connection conn;
 
     public SQLiteTripDAO() {
+        logger.log(Level.INFO, LogUtil.getMessage("dao.init"));
         try {
             Class.forName("org.sqlite.JDBC");
-            // Указываем явный путь к файлу БД
             String dbPath = System.getProperty("user.dir") + "/trips.db";
-            System.out.println("Database path: " + dbPath);
+            logger.log(Level.CONFIG,
+                    MessageFormat.format(LogUtil.getMessage("dao.db.path"), dbPath));
             conn = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
 
             if (conn != null) {
-                System.out.println("Connected to database");
+                logger.log(Level.INFO, LogUtil.getMessage("dao.connected"));
                 initializeDatabase();
             }
         } catch (Exception e) {
-            System.err.println("Error connecting to database:");
-            e.printStackTrace();
+            logger.log(Level.SEVERE, LogUtil.getMessage("error"), e);
+            throw new RuntimeException("Ошибка инициализации базы данных", e);
         }
     }
 
@@ -48,10 +54,13 @@ public class SQLiteTripDAO implements TripDAO {
                 comment TEXT,
                 FOREIGN KEY(trip_id) REFERENCES trips(id))""";
 
+        logger.log(Level.INFO, LogUtil.getMessage("dao.tables.init"));
         try (Statement stmt = conn.createStatement()) {
             stmt.execute(createTripsTable);
             stmt.execute(createReviewsTable);
+            logger.log(Level.INFO, LogUtil.getMessage("dao.tables.created"));
         } catch (SQLException e) {
+            logger.log(Level.SEVERE, LogUtil.getMessage("error"), e);
             System.err.println("Ошибка при создании таблиц:");
             e.printStackTrace();
         }
@@ -59,8 +68,12 @@ public class SQLiteTripDAO implements TripDAO {
 
     @Override
     public List<Trip> getAllTrips() {
+        logger.log(Level.INFO, LogUtil.getMessage("dao.get.trips"));
         List<Trip> trips = new ArrayList<>();
-        if (conn == null) return trips;
+        if (conn == null) {
+            logger.severe(LogUtil.getMessage("error") + ": Нет подключения к БД");
+            return trips;
+        }
 
         String sql = """
         SELECT t.id, t.from_city, t.to_city, t.start_date, t.end_date, t.budget, t.status,
@@ -84,7 +97,10 @@ public class SQLiteTripDAO implements TripDAO {
                 }
                 trips.add(trip);
             }
+            logger.log(Level.INFO,
+                    MessageFormat.format(LogUtil.getMessage("dao.trips.retrieved"), trips.size()));
         } catch (SQLException e) {
+            logger.log(Level.SEVERE, LogUtil.getMessage("error"), e);
             System.err.println("Ошибка при получении поездок:");
             e.printStackTrace();
         }
@@ -274,12 +290,14 @@ public class SQLiteTripDAO implements TripDAO {
     }
 
     public void close() {
+        logger.log(Level.INFO, LogUtil.getMessage("dao.close"));
         try {
             if (conn != null) {
                 conn.close();
                 System.out.println("Соединение с SQLite закрыто");
             }
         } catch (SQLException e) {
+            logger.log(Level.WARNING, LogUtil.getMessage("error"), e);
             System.err.println("Ошибка при закрытии соединения:");
             e.printStackTrace();
         }

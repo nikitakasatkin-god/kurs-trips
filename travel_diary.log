@@ -1,0 +1,72 @@
+июн. 11, 2025 12:51:24 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ????????????? DAO
+июн. 11, 2025 12:51:24 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ?????????? ? ??
+июн. 11, 2025 12:51:24 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ????????????? ?????? ??
+июн. 11, 2025 12:51:24 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ??????? ?? ???????
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.controller.MainController initialize
+INFO: Инициализация MainController
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Начало инициализации карты в WebView
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Карта успешно загружена в WebView
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.controller.MainController initialize
+INFO: Сервис карт успешно инициализирован
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Обновление всех данных
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Данные обновлены. Поездок: 12, Отзывов: 11
+июн. 11, 2025 12:51:26 AM org.example.kurstrips.controller.MainController initialize
+INFO: MainController успешно инициализирован
+июн. 11, 2025 12:51:33 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Построение простого маршрута:  -> 
+июн. 11, 2025 12:51:33 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+WARNING: Не заполнены поля маршрута
+июн. 11, 2025 12:51:33 AM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Не заполнены поля - Введите оба адреса
+июн. 11, 2025 12:51:35 AM org.example.kurstrips.controller.MainController addTrip
+INFO: Добавление новой поездки
+июн. 11, 2025 12:51:35 AM org.example.kurstrips.controller.MainController addTrip
+WARNING: Некорректный формат бюджета: 
+июн. 11, 2025 12:51:35 AM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Некорректный бюджет - Введите корректную сумму бюджета
+июн. 11, 2025 12:51:38 AM org.example.kurstrips.controller.MainController applyDateFilter
+INFO: Применение фильтра по датам: null - null
+июн. 11, 2025 12:51:38 AM org.example.kurstrips.controller.MainController applyDateFilter
+WARNING: Не выбраны даты для фильтрации
+июн. 11, 2025 12:51:38 AM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Не выбраны даты - Выберите хотя бы одну дату для фильтрации
+июн. 11, 2025 12:51:40 AM org.example.kurstrips.controller.MainController submitReview
+INFO: Отправка отзыва
+июн. 11, 2025 12:51:40 AM org.example.kurstrips.controller.MainController submitReview
+WARNING: Не выбрана поездка для отзыва
+июн. 11, 2025 12:51:40 AM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Не выбрана поездка - Выберите поездку из списка
+июн. 11, 2025 12:51:43 AM org.example.kurstrips.controller.MainController shutdown
+INFO: Завершение работы контроллера
+июн. 11, 2025 12:51:43 AM org.example.kurstrips.dao.impl.SQLiteTripDAO close
+INFO: ???????? ?????????? ? ??
+июн. 11, 2025 12:51:43 AM org.example.kurstrips.controller.MainController shutdown
+INFO: Ресурсы освобождены
