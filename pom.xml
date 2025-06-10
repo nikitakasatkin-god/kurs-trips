@@ -36,6 +36,18 @@
       <artifactId>sqlite-jdbc</artifactId>
       <version>3.42.0.0</version>
     </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.github.cdimascio</groupId>
+      <artifactId>dotenv-java</artifactId>
+      <version>3.0.0</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -44,6 +56,17 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M7</version>
+        <configuration>
+          <argLine>
+            --add-opens org.example.kurstrips/org.example.kurstrips.service=ALL-UNNAMED
+            --add-opens org.example.kurstrips/org.example.kurstrips.model=ALL-UNNAMED
+          </argLine>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.openjfx</groupId>
