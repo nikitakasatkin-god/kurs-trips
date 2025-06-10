@@ -70,3 +70,51 @@ INFO: Завершение работы контроллера
 INFO: ???????? ?????????? ? ??
 июн. 11, 2025 12:51:43 AM org.example.kurstrips.controller.MainController shutdown
 INFO: Ресурсы освобождены
+июн. 11, 2025 12:55:20 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ????????????? DAO
+июн. 11, 2025 12:55:20 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ?????????? ? ??
+июн. 11, 2025 12:55:20 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ????????????? ?????? ??
+июн. 11, 2025 12:55:20 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ??????? ?? ???????
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.controller.MainController initialize
+INFO: Инициализация MainController
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Начало инициализации карты в WebView
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Карта успешно загружена в WebView
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.controller.MainController initialize
+INFO: Сервис карт успешно инициализирован
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Обновление всех данных
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Данные обновлены. Поездок: 12, Отзывов: 11
+июн. 11, 2025 12:55:22 AM org.example.kurstrips.controller.MainController initialize
+INFO: MainController успешно инициализирован
+июн. 11, 2025 12:55:32 AM org.example.kurstrips.controller.MainController shutdown
+INFO: Завершение работы контроллера
+июн. 11, 2025 12:55:32 AM org.example.kurstrips.dao.impl.SQLiteTripDAO close
+INFO: ???????? ?????????? ? ??
+июн. 11, 2025 12:55:32 AM org.example.kurstrips.controller.MainController shutdown
+INFO: Ресурсы освобождены

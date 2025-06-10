@@ -124,7 +124,7 @@ public class CityService {
         return routeCities;
     }
 
-    private City findNearestCity(City target) {
+    public City findNearestCity(City target) {
         return MAJOR_CITIES.stream()
                 .min(Comparator.comparingDouble(c -> c.distanceTo(target)))
                 .orElse(MAJOR_CITIES.get(0));
