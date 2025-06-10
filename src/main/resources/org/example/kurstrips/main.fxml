@@ -51,6 +51,17 @@
 
   <Tab text="Поездки">
     <VBox spacing="10" style="-fx-padding: 10;">
+      <!-- Фильтр по датам -->
+      <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 5; -fx-background-color: #e3f2fd;">
+        <Label text="Фильтр по дате:" style="-fx-font-weight: bold;"/>
+        <DatePicker fx:id="filterStartDatePicker" promptText="Дата от" style="-fx-pref-width: 150;"/>
+        <DatePicker fx:id="filterEndDatePicker" promptText="Дата до" style="-fx-pref-width: 150;"/>
+        <Button fx:id="applyFilterButton" text="Применить фильтр"
+                style="-fx-base: #2196F3; -fx-text-fill: white;"/>
+        <Button fx:id="resetFilterButton" text="Сбросить"
+                style="-fx-base: #f44336; -fx-text-fill: white;"/>
+      </HBox>
+
       <!-- Таблица поездок -->
       <TableView fx:id="tripsTable" style="-fx-pref-height: 250;">
         <columns>

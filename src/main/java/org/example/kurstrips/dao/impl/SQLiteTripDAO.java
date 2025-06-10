@@ -220,6 +220,47 @@ public class SQLiteTripDAO implements TripDAO {
         return null;
     }
 
+    @Override
+    public List<Trip> getTripsByDateRange(LocalDate startDate, LocalDate endDate) throws SQLException {
+        List<Trip> trips = new ArrayList<>();
+        if (conn == null) return trips;
+
+        // Базовый запрос с JOIN для отзывов
+        StringBuilder sql = new StringBuilder("""
+        SELECT t.id, t.from_city, t.to_city, t.start_date, t.end_date, t.budget, t.status,
+               r.id as review_id, r.trip_id as review_trip_id, r.rating, r.comment 
+        FROM trips t LEFT JOIN reviews r ON t.id = r.trip_id
+        WHERE 1=1""");
+
+        // Добавляем условия фильтрации
+        if (startDate != null) {
+            sql.append(" AND t.start_date >= '").append(startDate).append("'");
+        }
+        if (endDate != null) {
+            sql.append(" AND t.end_date <= '").append(endDate).append("'");
+        }
+        sql.append(" ORDER BY t.start_date DESC");
+
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql.toString())) {
+
+            while (rs.next()) {
+                Trip trip = mapResultSetToTrip(rs);
+
+                if (rs.getInt("review_id") != 0) {
+                    trip.setReview(new Review(
+                            rs.getInt("review_id"),
+                            rs.getInt("review_trip_id"),
+                            rs.getInt("rating"),
+                            rs.getString("comment")
+                    ));
+                }
+                trips.add(trip);
+            }
+        }
+        return trips;
+    }
+
     private Trip mapResultSetToTrip(ResultSet rs) throws SQLException {
         Trip trip = new Trip(
                 rs.getInt("id"),

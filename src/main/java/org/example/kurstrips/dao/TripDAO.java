@@ -2,10 +2,13 @@ package org.example.kurstrips.dao;
 
 import org.example.kurstrips.model.Trip;
 import org.example.kurstrips.model.Review;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.sql.SQLException;
 
 public interface TripDAO {
+    List<Trip> getTripsByDateRange(LocalDate startDate, LocalDate endDate) throws SQLException;
     List<Trip> getAllTrips();
     void addTrip(Trip trip);
     void updateTrip(Trip trip);

@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
+import javafx.util.converter.LocalDateStringConverter;
 import org.example.kurstrips.model.City;
 import org.example.kurstrips.model.Review;
 import org.example.kurstrips.model.Trip;
@@ -17,6 +18,7 @@ import org.example.kurstrips.dao.impl.SQLiteTripDAO;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +52,11 @@ public class MainController {
     @FXML private TableColumn<Review, String> reviewCommentColumn;
     @FXML private TableColumn<Trip, Number> ratingColumn;
 
+    @FXML private DatePicker filterStartDatePicker;
+    @FXML private DatePicker filterEndDatePicker;
+    @FXML private Button applyFilterButton;
+    @FXML private Button resetFilterButton;
+
     private final MapService mapService = new YandexMapServiceImpl();
     private final CityService cityService = new CityService();
     private final TripDAO tripDAO = new SQLiteTripDAO();
@@ -69,9 +76,14 @@ public class MainController {
         // Настройка таблицы поездок
         fromCityColumn.setCellValueFactory(cellData -> cellData.getValue().fromCityProperty());
         toCityColumn.setCellValueFactory(cellData -> cellData.getValue().toCityProperty());
-        datesColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getStartDate() + " - " +
-                        cellData.getValue().getEndDate()));
+        // Настройка колонки с датами с новым форматом
+        datesColumn.setCellValueFactory(cellData -> {
+            Trip trip = cellData.getValue();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            String startDate = trip.getStartDate().format(formatter);
+            String endDate = trip.getEndDate().format(formatter);
+            return new SimpleStringProperty(startDate + " - " + endDate);
+        });
         budgetColumn.setCellValueFactory(cellData -> cellData.getValue().budgetProperty());
         statusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
         ratingColumn.setCellValueFactory(cellData -> {
@@ -114,6 +126,46 @@ public class MainController {
         if (!trips.isEmpty()) {
             tripsTable.getSelectionModel().selectFirst();
         }
+
+        // Инициализация фильтра
+        applyFilterButton.setOnAction(event -> applyDateFilter());
+        resetFilterButton.setOnAction(event -> resetDateFilter());
+
+        // Настройка формата даты
+        filterStartDatePicker.setConverter(new LocalDateStringConverter());
+        filterEndDatePicker.setConverter(new LocalDateStringConverter());
+    }
+
+    private void applyDateFilter() {
+        LocalDate startDate = filterStartDatePicker.getValue();
+        LocalDate endDate = filterEndDatePicker.getValue();
+
+        // Валидация дат
+        if (startDate == null && endDate == null) {
+            showAlert("Ошибка", "Не выбраны даты", "Выберите хотя бы одну дату для фильтрации");
+            return;
+        }
+
+        if (startDate != null && endDate != null && startDate.isAfter(endDate)) {
+            showAlert("Ошибка", "Некорректный диапазон", "Дата 'От' не может быть позже даты 'До'");
+            return;
+        }
+
+        try {
+            List<Trip> filteredTrips = tripDAO.getTripsByDateRange(startDate, endDate);
+            trips.setAll(filteredTrips);
+            showAlert("Фильтр применен", "Отфильтровано поездок: " + filteredTrips.size(), "");
+        } catch (Exception e) {
+            showAlert("Ошибка", "Ошибка фильтрации", e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void resetDateFilter() {
+        filterStartDatePicker.setValue(null);
+        filterEndDatePicker.setValue(null);
+        loadTrips(); // Загружаем все поездки заново
+        showAlert("Фильтр сброшен", "Показаны все поездки", "");
     }
 
     private void refreshAllData() {
