@@ -1,3 +1,8 @@
+/*
+ * Сервис для работы с городами и построения маршрутов.
+ * Содержит методы для поиска промежуточных городов и построения оптимальных маршрутов.
+ * Использует предопределенные списки городов России с их координатами.
+ */
 package org.example.kurstrips.service;
 
 import org.example.kurstrips.model.City;
@@ -5,6 +10,10 @@ import org.example.kurstrips.model.City;
 import java.util.*;
 
 public class CityService {
+    /*
+     * Список крупных и средних городов России с координатами.
+     * Включает города всех регионов страны, отсортированные по значимости.
+     */
     private static final List<City> MAJOR_CITIES = Arrays.asList(
             // Крупные города
             new City("Москва", 55.755814, 37.617635),
@@ -63,6 +72,10 @@ public class CityService {
             new City("Ногинск", 55.866670, 38.433330)
     );
 
+    /*
+     * Полный список городов для построения маршрутов.
+     * Включает как крупные, так и небольшие города.
+     */
     private static final List<City> ALL_CITIES = Arrays.asList(
             // Крупные города
             new City("Москва", 55.755814, 37.617635),
@@ -77,6 +90,12 @@ public class CityService {
             new City("Осташков", 57.152800, 33.111400)
     );
 
+    /*
+     * Находит промежуточные города между начальной и конечной точкой маршрута.
+     * @param start начальная точка маршрута
+     * @param end конечная точка маршрута
+     * @return список промежуточных городов, отсортированный по удалению от начальной точки
+     */
     public List<City> findIntermediateCities(City start, City end) {
         List<City> route = new ArrayList<>();
 
@@ -93,6 +112,14 @@ public class CityService {
         return route;
     }
 
+    /*
+     * Проверяет, находится ли город в коридоре между двумя точками маршрута.
+     * Использует формулу треугольного неравенства для определения положения города.
+     * @param start начальная точка маршрута
+     * @param end конечная точка маршрута
+     * @param checkCity проверяемый город
+     * @return true если город находится между точками маршрута
+     */
     private boolean isBetween(City start, City end, City checkCity) {
         // Проверяем, что город находится в "коридоре" между началом и концом
         double totalDistance = start.distanceTo(end);
@@ -103,6 +130,12 @@ public class CityService {
         return distanceToStart + distanceToEnd <= totalDistance * 1.3;
     }
 
+    /*
+     * Находит оптимальные города для маршрута между двумя точками.
+     * @param start начальная точка
+     * @param end конечная точка
+     * @return список городов, через которые проходит маршрут
+     */
     public List<City> findRouteCities(City start, City end) {
         List<City> routeCities = new ArrayList<>();
 
@@ -124,12 +157,22 @@ public class CityService {
         return routeCities;
     }
 
+    /*
+     * Находит ближайший крупный город к заданной точке.
+     * @param target точка для поиска
+     * @return ближайший город из списка MAJOR_CITIES
+     */
     public City findNearestCity(City target) {
         return MAJOR_CITIES.stream()
                 .min(Comparator.comparingDouble(c -> c.distanceTo(target)))
                 .orElse(MAJOR_CITIES.get(0));
     }
 
+    /*
+     * Проверяет, является ли город крупным (находится в списке MAJOR_CITIES).
+     * @param city проверяемый город
+     * @return true если город есть в списке крупных городов
+     */
     private boolean isMajorCity(City city) {
         return MAJOR_CITIES.stream()
                 .anyMatch(c -> c.getName().equalsIgnoreCase(city.getName()));

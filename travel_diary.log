@@ -332,3 +332,681 @@ INFO: Завершение работы контроллера
 INFO: ???????? ?????????? ? ??
 июн. 11, 2025 2:40:08 AM org.example.kurstrips.controller.MainController shutdown
 INFO: Ресурсы освобождены
+июн. 11, 2025 5:18:45 AM org.example.kurstrips.service.YandexMapServiceImpl <init>
+INFO: Yandex Maps API key loaded successfully
+июн. 11, 2025 5:18:45 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ????????????? DAO
+июн. 11, 2025 5:18:45 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ?????????? ? ??
+июн. 11, 2025 5:18:45 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ????????????? ?????? ??
+июн. 11, 2025 5:18:45 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ??????? ?? ???????
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.controller.MainController initialize
+INFO: Инициализация MainController
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Начало инициализации карты в WebView
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Карта успешно загружена в WebView
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.controller.MainController initialize
+INFO: Сервис карт успешно инициализирован
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Обновление всех данных
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Данные обновлены. Поездок: 12, Отзывов: 11
+июн. 11, 2025 5:18:47 AM org.example.kurstrips.controller.MainController initialize
+INFO: MainController успешно инициализирован
+июн. 11, 2025 5:18:56 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Построение простого маршрута: Воронеж -> 
+июн. 11, 2025 5:18:56 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+WARNING: Не заполнены поля маршрута
+июн. 11, 2025 5:18:56 AM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Не заполнены поля - Введите оба адреса
+июн. 11, 2025 5:19:01 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Построение простого маршрута: Воронеж -> Москва
+июн. 11, 2025 5:19:01 AM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Начало построения маршрута от {0} до {1}
+июн. 11, 2025 5:19:01 AM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Скрипт построения маршрута успешно выполнен
+июн. 11, 2025 5:19:01 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Прямой маршрут успешно построен
+июн. 11, 2025 5:19:05 AM org.example.kurstrips.controller.MainController shutdown
+INFO: Завершение работы контроллера
+июн. 11, 2025 5:19:05 AM org.example.kurstrips.dao.impl.SQLiteTripDAO close
+INFO: ???????? ?????????? ? ??
+июн. 11, 2025 5:19:05 AM org.example.kurstrips.controller.MainController shutdown
+INFO: Ресурсы освобождены
+июн. 11, 2025 5:22:21 AM org.example.kurstrips.service.YandexMapServiceImpl <init>
+INFO: Yandex Maps API key loaded successfully
+июн. 11, 2025 5:22:21 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ????????????? DAO
+июн. 11, 2025 5:22:21 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ?????????? ? ??
+июн. 11, 2025 5:22:21 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ????????????? ?????? ??
+июн. 11, 2025 5:22:21 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ??????? ?? ???????
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.controller.MainController initialize
+INFO: Инициализация MainController
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Начало инициализации карты в WebView
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Карта успешно загружена в WebView
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.controller.MainController initialize
+INFO: Сервис карт успешно инициализирован
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Обновление всех данных
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Данные обновлены. Поездок: 12, Отзывов: 11
+июн. 11, 2025 5:22:23 AM org.example.kurstrips.controller.MainController initialize
+INFO: MainController успешно инициализирован
+июн. 11, 2025 11:09:11 AM org.example.kurstrips.service.YandexMapServiceImpl <init>
+INFO: Yandex Maps API key loaded successfully
+июн. 11, 2025 11:09:11 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ????????????? DAO
+июн. 11, 2025 11:09:11 AM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ?????????? ? ??
+июн. 11, 2025 11:09:11 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ????????????? ?????? ??
+июн. 11, 2025 11:09:11 AM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ??????? ?? ???????
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.controller.MainController initialize
+INFO: Инициализация MainController
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Начало инициализации карты в WebView
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Карта успешно загружена в WebView
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.controller.MainController initialize
+INFO: Сервис карт успешно инициализирован
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 12
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Обновление всех данных
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 12
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Данные обновлены. Поездок: 12, Отзывов: 11
+июн. 11, 2025 11:09:13 AM org.example.kurstrips.controller.MainController initialize
+INFO: MainController успешно инициализирован
+июн. 11, 2025 11:10:19 AM org.example.kurstrips.controller.MainController addTrip
+INFO: Добавление новой поездки
+июн. 11, 2025 11:10:19 AM org.example.kurstrips.controller.MainController addTrip
+WARNING: Некорректный формат бюджета: 
+июн. 11, 2025 11:10:19 AM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Некорректный бюджет - Введите корректную сумму бюджета
+июн. 11, 2025 11:10:25 AM org.example.kurstrips.controller.MainController addTrip
+INFO: Добавление новой поездки
+июн. 11, 2025 11:10:25 AM org.example.kurstrips.controller.MainController addTrip
+WARNING: Некорректный формат бюджета: папапвпв
+июн. 11, 2025 11:10:25 AM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Некорректный бюджет - Введите корректную сумму бюджета
+июн. 11, 2025 11:10:32 AM org.example.kurstrips.controller.MainController addTrip
+INFO: Добавление новой поездки
+июн. 11, 2025 11:10:32 AM org.example.kurstrips.controller.MainController addTrip
+WARNING: Не заполнены города маршрута
+июн. 11, 2025 11:10:32 AM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Заполните города - Введите начальный и конечный город
+июн. 11, 2025 11:10:39 AM org.example.kurstrips.controller.MainController addTrip
+INFO: Добавление новой поездки
+июн. 11, 2025 11:10:39 AM org.example.kurstrips.controller.MainController addTrip
+WARNING: Не заполнены даты поездки
+июн. 11, 2025 11:10:39 AM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Заполните даты - Выберите даты начала и окончания поездки
+июн. 11, 2025 11:10:44 AM org.example.kurstrips.controller.MainController addTrip
+INFO: Добавление новой поездки
+июн. 11, 2025 11:10:44 AM org.example.kurstrips.controller.MainController addTrip
+WARNING: Не заполнены даты поездки
+июн. 11, 2025 11:10:44 AM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Заполните даты - Выберите даты начала и окончания поездки
+июн. 11, 2025 11:10:48 AM org.example.kurstrips.controller.MainController addTrip
+INFO: Добавление новой поездки
+июн. 11, 2025 11:10:48 AM org.example.kurstrips.controller.MainController addTrip
+INFO: Поездка добавлена: ID=19, Воронеж -> Москва, 2025-06-11 - 2025-06-13, бюджет=200 000
+июн. 11, 2025 11:10:48 AM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Успех - Поездка добавлена - Поездка успешно добавлена в список
+июн. 11, 2025 11:10:55 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Построение простого маршрута: Воронеж -> Москва
+июн. 11, 2025 11:10:55 AM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Начало построения маршрута от {0} до {1}
+июн. 11, 2025 11:10:55 AM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Скрипт построения маршрута успешно выполнен
+июн. 11, 2025 11:10:55 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Прямой маршрут успешно построен
+июн. 11, 2025 11:11:40 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Построение простого маршрута: Москва -> Санкт-Петрбург
+июн. 11, 2025 11:11:40 AM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Начало построения маршрута от {0} до {1}
+июн. 11, 2025 11:11:40 AM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Скрипт построения маршрута успешно выполнен
+июн. 11, 2025 11:11:40 AM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Прямой маршрут успешно построен
+июн. 11, 2025 11:12:16 AM org.example.kurstrips.controller.MainController submitReview
+INFO: Отправка отзыва
+июн. 11, 2025 11:12:16 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Обновление всех данных
+июн. 11, 2025 11:12:16 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 11, 2025 11:12:16 AM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 13
+июн. 11, 2025 11:12:16 AM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Данные обновлены. Поездок: 13, Отзывов: 12
+июн. 11, 2025 11:12:16 AM org.example.kurstrips.controller.MainController submitReview
+INFO: Отзыв сохранен: поездка ID=19, рейтинг=5, комментарий=
+июн. 11, 2025 11:12:46 AM org.example.kurstrips.controller.MainController shutdown
+INFO: Завершение работы контроллера
+июн. 11, 2025 11:12:46 AM org.example.kurstrips.dao.impl.SQLiteTripDAO close
+INFO: ???????? ?????????? ? ??
+июн. 11, 2025 11:12:46 AM org.example.kurstrips.controller.MainController shutdown
+INFO: Ресурсы освобождены
+июн. 15, 2025 10:40:21 PM org.example.kurstrips.service.YandexMapServiceImpl <init>
+INFO: Yandex Maps API key loaded successfully
+июн. 15, 2025 10:40:21 PM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ????????????? DAO
+июн. 15, 2025 10:40:22 PM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ?????????? ? ??
+июн. 15, 2025 10:40:22 PM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ????????????? ?????? ??
+июн. 15, 2025 10:40:22 PM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ??????? ?? ???????
+июн. 15, 2025 10:40:24 PM org.example.kurstrips.controller.MainController initialize
+INFO: Инициализация MainController
+июн. 15, 2025 10:40:24 PM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Начало инициализации карты в WebView
+июн. 15, 2025 10:40:24 PM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Карта успешно загружена в WebView
+июн. 15, 2025 10:40:24 PM org.example.kurstrips.controller.MainController initialize
+INFO: Сервис карт успешно инициализирован
+июн. 15, 2025 10:40:24 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 15, 2025 10:40:24 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 15, 2025 10:40:25 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 13
+июн. 15, 2025 10:40:25 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 13
+июн. 15, 2025 10:40:25 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 15, 2025 10:40:25 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 15, 2025 10:40:25 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 13
+июн. 15, 2025 10:40:25 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 13
+июн. 15, 2025 10:40:25 PM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Обновление всех данных
+июн. 15, 2025 10:40:25 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 15, 2025 10:40:25 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 13
+июн. 15, 2025 10:40:25 PM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Данные обновлены. Поездок: 13, Отзывов: 12
+июн. 15, 2025 10:40:25 PM org.example.kurstrips.controller.MainController initialize
+INFO: MainController успешно инициализирован
+июн. 15, 2025 10:40:31 PM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Построение простого маршрута:  -> 
+июн. 15, 2025 10:40:31 PM org.example.kurstrips.controller.MainController buildSimpleRoute
+WARNING: Не заполнены поля маршрута
+июн. 15, 2025 10:40:31 PM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Не заполнены поля - Введите оба адреса
+июн. 15, 2025 10:40:37 PM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Построение простого маршрута: выпы -> авав
+июн. 15, 2025 10:40:37 PM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Начало построения маршрута от {0} до {1}
+июн. 15, 2025 10:40:37 PM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Скрипт построения маршрута успешно выполнен
+июн. 15, 2025 10:40:37 PM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Прямой маршрут успешно построен
+июн. 15, 2025 10:40:51 PM org.example.kurstrips.controller.MainController buildOptimalRoute
+INFO: Построение оптимального маршрута: выпы -> авав
+июн. 15, 2025 10:40:51 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+INFO: Начало геокодирования адреса: выпы
+июн. 15, 2025 10:40:52 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+WARNING: Адрес не распознан: выпы
+июн. 15, 2025 10:40:52 PM org.example.kurstrips.controller.MainController buildOptimalRoute
+SEVERE: Ошибка при построении оптимального маршрута
+java.lang.Exception: Адрес не распознан: выпы
+	at org.example.kurstrips/org.example.kurstrips.service.YandexMapServiceImpl.geocode(YandexMapServiceImpl.java:358)
+	at org.example.kurstrips/org.example.kurstrips.controller.MainController.buildOptimalRoute(MainController.java:461)
+	at org.example.kurstrips/org.example.kurstrips.controller.MainController.lambda$initialize$1(MainController.java:114)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Node.fireEvent(Node.java:8792)
+	at javafx.controls/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208)
+	at javafx.controls/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:138)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:557)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:943)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+
+июн. 15, 2025 10:40:52 PM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Ошибка построения маршрута - Адрес не распознан: выпы
+июн. 15, 2025 10:40:57 PM org.example.kurstrips.controller.MainController shutdown
+INFO: Завершение работы контроллера
+июн. 15, 2025 10:40:57 PM org.example.kurstrips.dao.impl.SQLiteTripDAO close
+INFO: ???????? ?????????? ? ??
+июн. 15, 2025 10:40:57 PM org.example.kurstrips.controller.MainController shutdown
+INFO: Ресурсы освобождены
+июн. 15, 2025 10:55:00 PM org.example.kurstrips.service.YandexMapServiceImpl <init>
+INFO: Yandex Maps API key loaded successfully
+июн. 15, 2025 10:55:00 PM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ????????????? DAO
+июн. 15, 2025 10:55:00 PM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ?????????? ? ??
+июн. 15, 2025 10:55:00 PM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ????????????? ?????? ??
+июн. 15, 2025 10:55:00 PM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ??????? ?? ???????
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.controller.MainController initialize
+INFO: Инициализация MainController
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Начало инициализации карты в WebView
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Карта успешно загружена в WebView
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.controller.MainController initialize
+INFO: Сервис карт успешно инициализирован
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 13
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 13
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 13
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 13
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Обновление всех данных
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 13
+июн. 15, 2025 10:55:02 PM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Данные обновлены. Поездок: 13, Отзывов: 12
+июн. 15, 2025 10:55:03 PM org.example.kurstrips.controller.MainController initialize
+INFO: MainController успешно инициализирован
+июн. 15, 2025 10:55:15 PM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Построение простого маршрута: Воронеж -> Караганда
+июн. 15, 2025 10:55:15 PM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Начало построения маршрута от {0} до {1}
+июн. 15, 2025 10:55:15 PM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Скрипт построения маршрута успешно выполнен
+июн. 15, 2025 10:55:15 PM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Прямой маршрут успешно построен
+июн. 15, 2025 10:55:17 PM org.example.kurstrips.controller.MainController buildOptimalRoute
+INFO: Построение оптимального маршрута: Воронеж -> Караганда
+июн. 15, 2025 10:55:17 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+INFO: Начало геокодирования адреса: Воронеж
+июн. 15, 2025 10:55:17 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+INFO: Начало геокодирования адреса: Караганда
+июн. 15, 2025 10:55:17 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+INFO: Координаты найдены: широта=49,808, долгота=73,089
+июн. 15, 2025 10:55:17 PM org.example.kurstrips.service.YandexMapServiceImpl displayRouteWithCities
+INFO: Отображение маршрута через 1 промежуточных городов
+июн. 15, 2025 10:55:17 PM org.example.kurstrips.service.YandexMapServiceImpl displayRouteWithCities
+INFO: Маршрут с промежуточными городами успешно отображен
+июн. 15, 2025 10:55:17 PM org.example.kurstrips.controller.MainController buildOptimalRoute
+INFO: Оптимальный маршрут построен через 1 городов
+июн. 15, 2025 10:56:04 PM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Построение простого маршрута: Воронеж -> вав
+июн. 15, 2025 10:56:04 PM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Начало построения маршрута от {0} до {1}
+июн. 15, 2025 10:56:05 PM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Скрипт построения маршрута успешно выполнен
+июн. 15, 2025 10:56:05 PM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Прямой маршрут успешно построен
+июн. 15, 2025 10:56:06 PM org.example.kurstrips.controller.MainController buildOptimalRoute
+INFO: Построение оптимального маршрута: Воронеж -> вав
+июн. 15, 2025 10:56:06 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+INFO: Начало геокодирования адреса: Воронеж
+июн. 15, 2025 10:56:06 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+INFO: Начало геокодирования адреса: вав
+июн. 15, 2025 10:56:06 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+INFO: Координаты найдены: широта=32,104, долгота=35,169
+июн. 15, 2025 10:56:06 PM org.example.kurstrips.service.YandexMapServiceImpl displayRouteWithCities
+INFO: Отображение маршрута через 0 промежуточных городов
+июн. 15, 2025 10:56:06 PM org.example.kurstrips.service.YandexMapServiceImpl displayRouteWithCities
+INFO: Маршрут с промежуточными городами успешно отображен
+июн. 15, 2025 10:56:06 PM org.example.kurstrips.controller.MainController buildOptimalRoute
+INFO: Оптимальный маршрут построен через 0 городов
+июн. 15, 2025 10:56:13 PM org.example.kurstrips.controller.MainController buildOptimalRoute
+INFO: Построение оптимального маршрута: Воронеж -> вавывыв
+июн. 15, 2025 10:56:13 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+INFO: Начало геокодирования адреса: Воронеж
+июн. 15, 2025 10:56:13 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+INFO: Начало геокодирования адреса: вавывыв
+июн. 15, 2025 10:56:13 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+WARNING: Адрес не распознан: вавывыв
+июн. 15, 2025 10:56:13 PM org.example.kurstrips.controller.MainController buildOptimalRoute
+SEVERE: Ошибка при построении оптимального маршрута
+java.lang.Exception: Адрес не распознан: вавывыв
+	at org.example.kurstrips/org.example.kurstrips.service.YandexMapServiceImpl.geocode(YandexMapServiceImpl.java:358)
+	at org.example.kurstrips/org.example.kurstrips.controller.MainController.buildOptimalRoute(MainController.java:462)
+	at org.example.kurstrips/org.example.kurstrips.controller.MainController.lambda$initialize$1(MainController.java:114)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Node.fireEvent(Node.java:8792)
+	at javafx.controls/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208)
+	at javafx.controls/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:138)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:557)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:943)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+
+июн. 15, 2025 10:56:13 PM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Ошибка построения маршрута - Адрес не распознан: вавывыв
+июн. 15, 2025 10:56:22 PM org.example.kurstrips.controller.MainController buildOptimalRoute
+INFO: Построение оптимального маршрута: Воронежвывы -> вавывыв
+июн. 15, 2025 10:56:22 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+INFO: Начало геокодирования адреса: Воронежвывы
+июн. 15, 2025 10:56:22 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+INFO: Начало геокодирования адреса: вавывыв
+июн. 15, 2025 10:56:22 PM org.example.kurstrips.service.YandexMapServiceImpl geocode
+WARNING: Адрес не распознан: вавывыв
+июн. 15, 2025 10:56:22 PM org.example.kurstrips.controller.MainController buildOptimalRoute
+SEVERE: Ошибка при построении оптимального маршрута
+java.lang.Exception: Адрес не распознан: вавывыв
+	at org.example.kurstrips/org.example.kurstrips.service.YandexMapServiceImpl.geocode(YandexMapServiceImpl.java:358)
+	at org.example.kurstrips/org.example.kurstrips.controller.MainController.buildOptimalRoute(MainController.java:462)
+	at org.example.kurstrips/org.example.kurstrips.controller.MainController.lambda$initialize$1(MainController.java:114)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Node.fireEvent(Node.java:8792)
+	at javafx.controls/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208)
+	at javafx.controls/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:138)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:557)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:943)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+
+июн. 15, 2025 10:56:22 PM org.example.kurstrips.controller.MainController showAlert
+INFO: Показ предупреждения: Ошибка - Ошибка построения маршрута - Адрес не распознан: вавывыв
+июн. 15, 2025 10:56:26 PM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Построение простого маршрута: Воронежвывы -> вавывыв
+июн. 15, 2025 10:56:26 PM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Начало построения маршрута от {0} до {1}
+июн. 15, 2025 10:56:26 PM org.example.kurstrips.service.YandexMapServiceImpl buildRoute
+INFO: Скрипт построения маршрута успешно выполнен
+июн. 15, 2025 10:56:26 PM org.example.kurstrips.controller.MainController buildSimpleRoute
+INFO: Прямой маршрут успешно построен
+июн. 15, 2025 10:56:28 PM org.example.kurstrips.controller.MainController shutdown
+INFO: Завершение работы контроллера
+июн. 15, 2025 10:56:28 PM org.example.kurstrips.dao.impl.SQLiteTripDAO close
+INFO: ???????? ?????????? ? ??
+июн. 15, 2025 10:56:28 PM org.example.kurstrips.controller.MainController shutdown
+INFO: Ресурсы освобождены
+июн. 15, 2025 11:03:47 PM org.example.kurstrips.service.YandexMapServiceImpl <init>
+INFO: Yandex Maps API key loaded successfully
+июн. 15, 2025 11:03:48 PM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ????????????? DAO
+июн. 15, 2025 11:03:48 PM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ?????????? ? ??
+июн. 15, 2025 11:03:48 PM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ????????????? ?????? ??
+июн. 15, 2025 11:03:48 PM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ??????? ?? ???????
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.controller.MainController initialize
+INFO: Инициализация MainController
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Начало инициализации карты в WebView
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Карта успешно загружена в WebView
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.controller.MainController initialize
+INFO: Сервис карт успешно инициализирован
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 13
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 13
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 13
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 13
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Обновление всех данных
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 13
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Данные обновлены. Поездок: 13, Отзывов: 12
+июн. 15, 2025 11:03:50 PM org.example.kurstrips.controller.MainController initialize
+INFO: MainController успешно инициализирован
+июн. 15, 2025 11:32:51 PM org.example.kurstrips.service.YandexMapServiceImpl <init>
+INFO: Yandex Maps API key loaded successfully
+июн. 15, 2025 11:32:51 PM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ????????????? DAO
+июн. 15, 2025 11:32:52 PM org.example.kurstrips.dao.impl.SQLiteTripDAO <init>
+INFO: ?????????? ? ??
+июн. 15, 2025 11:32:52 PM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ????????????? ?????? ??
+июн. 15, 2025 11:32:52 PM org.example.kurstrips.dao.impl.SQLiteTripDAO initializeDatabase
+INFO: ??????? ?? ???????
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.controller.MainController initialize
+INFO: Инициализация MainController
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Начало инициализации карты в WebView
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.service.YandexMapServiceImpl initializeMap
+INFO: Карта успешно загружена в WebView
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.controller.MainController initialize
+INFO: Сервис карт успешно инициализирован
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 13
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 13
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загрузка списка поездок
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 13
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.controller.MainController loadTrips
+INFO: Загружено поездок: 13
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Обновление всех данных
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ????????? ?????? ???????
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.dao.impl.SQLiteTripDAO getAllTrips
+INFO: ???????? ???????: 13
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.controller.MainController refreshAllData
+INFO: Данные обновлены. Поездок: 13, Отзывов: 12
+июн. 15, 2025 11:32:54 PM org.example.kurstrips.controller.MainController initialize
+INFO: MainController успешно инициализирован
+июн. 15, 2025 11:33:12 PM org.example.kurstrips.controller.MainController shutdown
+INFO: Завершение работы контроллера
+июн. 15, 2025 11:33:12 PM org.example.kurstrips.dao.impl.SQLiteTripDAO close
+INFO: ???????? ?????????? ? ??
+июн. 15, 2025 11:33:12 PM org.example.kurstrips.controller.MainController shutdown
+INFO: Ресурсы освобождены

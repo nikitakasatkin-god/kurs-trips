@@ -1,21 +1,51 @@
+/*
+ * Класс, представляющий географический город с координатами.
+ * Содержит методы для работы с географическими координатами
+ * и расчета расстояний между городами.
+ */
 package org.example.kurstrips.model;
 
 public class City {
-    private final String name;
-    private final double latitude;
-    private final double longitude;
+    private final String name;       // Название города
+    private final double latitude;   // Географическая широта
+    private final double longitude;  // Географическая долгота
 
+    /*
+     * Создает новый объект города.
+     * @param name название города
+     * @param latitude широта в градусах
+     * @param longitude долгота в градусах
+     */
     public City(String name, double latitude, double longitude) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    // Геттеры
+    /*
+     * Возвращает название города.
+     * @return название города
+     */
     public String getName() { return name; }
+
+    /*
+     * Возвращает географическую широту города.
+     * @return широта в градусах
+     */
     public double getLatitude() { return latitude; }
+
+    /*
+     * Возвращает географическую долготу города.
+     * @return долгота в градусах
+     */
     public double getLongitude() { return longitude; }
 
+    /*
+     * Вычисляет расстояние между этим городом и другим городом
+     * по формуле гаверсинусов (Haversine formula).
+     * @param other другой город для расчета расстояния
+     * @return расстояние между городами в километрах
+     */
     public double distanceTo(City other) {
         final int R = 6371; // Радиус Земли в км
         double latDistance = Math.toRadians(other.latitude - this.latitude);

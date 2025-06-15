@@ -1,3 +1,18 @@
+/*
+ * Главный контроллер приложения "Дневник путешествий".
+ * Управляет основным интерфейсом пользователя и координирует взаимодействие между:
+ * - Моделями данных (Trip, Review, City)
+ * - Сервисами (MapService, CityService)
+ * - DAO (TripDAO)
+ * - Представлением (FXML-интерфейс)
+ *
+ * Основные функции:
+ * - Построение маршрутов (прямых и оптимальных)
+ * - Управление списком поездок
+ * - Добавление и редактирование отзывов
+ * - Фильтрация поездок по датам
+ * - Взаимодействие с картами через Yandex Maps API
+ */
 package org.example.kurstrips.controller;
 
 import javafx.beans.property.SimpleIntegerProperty;
@@ -27,55 +42,80 @@ import org.example.kurstrips.util.LogUtil;
 public class MainController {
     private static final Logger logger = LogUtil.getLogger(MainController.class);
 
-    @FXML private TextField startField;
-    @FXML private TextField endField;
-    @FXML private Button buildRouteBtn;
-    @FXML private Button buildOptimalRouteBtn;
-    @FXML private WebView webView;
-    @FXML private VBox citiesListContainer;
-    @FXML private Label routeInfoLabel;
-    @FXML private TextField budgetField;
-    @FXML private DatePicker startDatePicker;
-    @FXML private DatePicker endDatePicker;
-    @FXML private Button addTripButton;
-    @FXML private TabPane tabPane;
+    /*
+     * FXML-элементы интерфейса
+     */
+    @FXML private TextField startField;          // Поле ввода начального города
+    @FXML private TextField endField;            // Поле ввода конечного города
+    @FXML private Button buildRouteBtn;          // Кнопка построения прямого маршрута
+    @FXML private Button buildOptimalRouteBtn;   // Кнопка построения оптимального маршрута
+    @FXML private WebView webView;               // Компонент для отображения карты
+    @FXML private VBox citiesListContainer;      // Контейнер для списка промежуточных городов
+    @FXML private Label routeInfoLabel;          // Метка с информацией о маршруте
+    @FXML private TextField budgetField;         // Поле ввода бюджета поездки
+    @FXML private DatePicker startDatePicker;    // Выбор даты начала поездки
+    @FXML private DatePicker endDatePicker;      // Выбор даты окончания поездки
+    @FXML private Button addTripButton;          // Кнопка добавления новой поездки
+    @FXML private TabPane tabPane;               // Панель вкладок интерфейса
+
+    // Таблица поездок и связанные колонки
     @FXML private TableView<Trip> tripsTable;
     @FXML private TableColumn<Trip, String> fromCityColumn;
     @FXML private TableColumn<Trip, String> toCityColumn;
     @FXML private TableColumn<Trip, String> datesColumn;
     @FXML private TableColumn<Trip, Number> budgetColumn;
     @FXML private TableColumn<Trip, String> statusColumn;
-    @FXML private Slider ratingSlider;
-    @FXML private TextArea reviewTextArea;
-    @FXML private Button submitReviewButton;
+
+    // Элементы для работы с отзывами
+    @FXML private Slider ratingSlider;           // Слайдер для выбора оценки
+    @FXML private TextArea reviewTextArea;       // Поле ввода текста отзыва
+    @FXML private Button submitReviewButton;     // Кнопка отправки отзыва
+
+    // Таблица отзывов и связанные колонки
     @FXML private TableView<Review> reviewsTable;
     @FXML private TableColumn<Review, String> tripRouteColumn;
     @FXML private TableColumn<Review, Number> reviewRatingColumn;
     @FXML private TableColumn<Review, String> reviewCommentColumn;
     @FXML private TableColumn<Trip, Number> ratingColumn;
-    @FXML private DatePicker filterStartDatePicker;
-    @FXML private DatePicker filterEndDatePicker;
-    @FXML private Button applyFilterButton;
-    @FXML private Button resetFilterButton;
 
-    private final MapService mapService = new YandexMapServiceImpl();
-    private final CityService cityService = new CityService();
-    private final TripDAO tripDAO = new SQLiteTripDAO();
-    private final ObservableList<Trip> trips = FXCollections.observableArrayList();
-    private final ObservableList<Review> allReviews = FXCollections.observableArrayList();
+    // Элементы фильтрации по датам
+    @FXML private DatePicker filterStartDatePicker;  // Фильтр "Дата от"
+    @FXML private DatePicker filterEndDatePicker;    // Фильтр "Дата до"
+    @FXML private Button applyFilterButton;          // Кнопка применения фильтра
+    @FXML private Button resetFilterButton;          // Кнопка сброса фильтра
 
+    /*
+     * Сервисы и DAO
+     */
+    private final MapService mapService = new YandexMapServiceImpl();  // Сервис работы с картами
+    private final CityService cityService = new CityService();         // Сервис работы с городами
+    private final TripDAO tripDAO = new SQLiteTripDAO();               // DAO для работы с поездками
+
+    /*
+     * Коллекции данных
+     */
+    private final ObservableList<Trip> trips = FXCollections.observableArrayList();      // Список поездок
+    private final ObservableList<Review> allReviews = FXCollections.observableArrayList(); // Список всех отзывов
+
+    /*
+     * Инициализация контроллера.
+     * Вызывается автоматически после загрузки FXML.
+     */
     @FXML
     public void initialize() {
         logger.log(Level.INFO, "Инициализация MainController");
         try {
+            // 1. Инициализация карты
             mapService.initializeMap(webView);
             logger.log(Level.INFO, "Сервис карт успешно инициализирован");
 
+            // 2. Настройка обработчиков событий для кнопок
             buildRouteBtn.setOnAction(event -> buildSimpleRoute());
             buildOptimalRouteBtn.setOnAction(event -> buildOptimalRoute());
             addTripButton.setOnAction(event -> addTrip());
             submitReviewButton.setOnAction(event -> submitReview());
 
+            // 3. Настройка колонок таблицы поездок
             fromCityColumn.setCellValueFactory(cellData -> cellData.getValue().fromCityProperty());
             toCityColumn.setCellValueFactory(cellData -> cellData.getValue().toCityProperty());
             datesColumn.setCellValueFactory(cellData -> {
@@ -92,16 +132,20 @@ public class MainController {
                 return review != null ? review.ratingProperty() : new SimpleIntegerProperty(0);
             });
 
+            // 4. Настройка таблицы поездок
             tripsTable.setItems(trips);
             loadTrips();
 
+            // 5. Настройка колонок таблицы отзывов
             tripRouteColumn.setCellValueFactory(cellData ->
                     new SimpleStringProperty(getTripRoute(cellData.getValue().getTripId())));
             reviewRatingColumn.setCellValueFactory(cellData -> cellData.getValue().ratingProperty());
             reviewCommentColumn.setCellValueFactory(cellData -> cellData.getValue().commentProperty());
 
+            // 6. Загрузка данных
             loadAllData();
 
+            // 7. Выбор первой поездки по умолчанию
             if (!trips.isEmpty()) {
                 tripsTable.getSelectionModel().selectFirst();
                 logger.log(Level.FINE, "Первая поездка выбрана по умолчанию");
@@ -109,10 +153,12 @@ public class MainController {
 
             refreshAllData();
 
+            // 8. Настройка слушателя изменения выбранной поездки
             tripsTable.getSelectionModel().selectedItemProperty().addListener(
                     (obs, oldSelection, newSelection) -> updateReviewsForSelectedTrip()
             );
 
+            // 9. Настройка фильтрации по датам
             applyFilterButton.setOnAction(event -> applyDateFilter());
             resetFilterButton.setOnAction(event -> resetDateFilter());
 
@@ -126,6 +172,10 @@ public class MainController {
         }
     }
 
+    /*
+     * Применяет фильтр по датам к списку поездок.
+     * Показывает только поездки, попадающие в указанный диапазон дат.
+     */
     private void applyDateFilter() {
         LocalDate startDate = filterStartDatePicker.getValue();
         LocalDate endDate = filterEndDatePicker.getValue();
@@ -154,6 +204,9 @@ public class MainController {
         }
     }
 
+    /*
+     * Сбрасывает фильтр по датам и показывает все поездки.
+     */
     private void resetDateFilter() {
         logger.log(Level.INFO, "Сброс фильтра по датам");
         filterStartDatePicker.setValue(null);
@@ -162,6 +215,12 @@ public class MainController {
         showAlert("Фильтр сброшен", "Показаны все поездки", "");
     }
 
+    /*
+     * Обновляет все данные в интерфейсе:
+     * - Список поездок
+     * - Список отзывов
+     * - Состояние таблиц
+     */
     private void refreshAllData() {
         logger.log(Level.INFO, "Обновление всех данных");
         try {
@@ -187,12 +246,18 @@ public class MainController {
         }
     }
 
+    /*
+     * Загружает все данные: поездки и связанные с ними отзывы.
+     */
     private void loadAllData() {
         logger.log(Level.FINE, "Загрузка всех данных");
         loadTrips();
         loadAllReviews();
     }
 
+    /*
+     * Загружает все отзывы из текущего списка поездок.
+     */
     private void loadAllReviews() {
         logger.log(Level.FINE, "Загрузка всех отзывов");
         allReviews.clear();
@@ -204,6 +269,9 @@ public class MainController {
         reviewsTable.setItems(allReviews);
     }
 
+    /*
+     * Обновляет список отзывов при изменении выбранной поездки.
+     */
     private void updateReviewsForSelectedTrip() {
         Trip selectedTrip = tripsTable.getSelectionModel().getSelectedItem();
         if (selectedTrip != null) {
@@ -216,6 +284,9 @@ public class MainController {
         }
     }
 
+    /*
+     * Возвращает строковое представление маршрута поездки в формате "Город1 → Город2".
+     */
     private String getTripRoute(int tripId) {
         return trips.stream()
                 .filter(trip -> trip.getId() == tripId)
@@ -224,6 +295,10 @@ public class MainController {
                 .orElse("Неизвестный маршрут");
     }
 
+    /*
+     * Добавляет новую поездку в систему.
+     * Проверяет корректность введенных данных перед сохранением.
+     */
     private void addTrip() {
         logger.log(Level.INFO, "Добавление новой поездки");
         try {
@@ -233,6 +308,7 @@ public class MainController {
             LocalDate startDate = startDatePicker.getValue();
             LocalDate endDate = endDatePicker.getValue();
 
+            // Валидация данных
             if (from.isEmpty() || to.isEmpty()) {
                 logger.log(Level.WARNING, "Не заполнены города маршрута");
                 showAlert("Ошибка", "Заполните города", "Введите начальный и конечный город");
@@ -252,6 +328,7 @@ public class MainController {
                 return;
             }
 
+            // Создание и сохранение поездки
             Trip trip = new Trip(0, from, to, startDate, endDate, budget);
             tripDAO.addTrip(trip);
             trips.add(trip);
@@ -269,6 +346,9 @@ public class MainController {
         }
     }
 
+    /*
+     * Добавляет или обновляет отзыв для выбранной поездки.
+     */
     private void submitReview() {
         logger.log(Level.INFO, "Отправка отзыва");
         Trip selectedTrip = tripsTable.getSelectionModel().getSelectedItem();
@@ -292,6 +372,7 @@ public class MainController {
 
             refreshAllData();
 
+            // Восстановление выбора поездки после обновления
             for (Trip trip : trips) {
                 if (trip.getId() == selectedTrip.getId()) {
                     tripsTable.getSelectionModel().select(trip);
@@ -299,6 +380,7 @@ public class MainController {
                 }
             }
 
+            // Сброс полей ввода
             ratingSlider.setValue(3);
             reviewTextArea.clear();
 
@@ -311,6 +393,9 @@ public class MainController {
         }
     }
 
+    /*
+     * Загружает список поездок из базы данных.
+     */
     private void loadTrips() {
         logger.log(Level.INFO, "Загрузка списка поездок");
         try {
@@ -322,6 +407,9 @@ public class MainController {
         }
     }
 
+    /*
+     * Очищает поля ввода данных о поездке.
+     */
     private void clearTripFields() {
         logger.log(Level.FINE, "Очистка полей ввода поездки");
         budgetField.clear();
@@ -329,6 +417,9 @@ public class MainController {
         endDatePicker.setValue(null);
     }
 
+    /*
+     * Строит прямой маршрут между двумя городами.
+     */
     private void buildSimpleRoute() {
         String from = startField.getText().trim();
         String to = endField.getText().trim();
@@ -351,6 +442,9 @@ public class MainController {
         }
     }
 
+    /*
+     * Строит оптимальный маршрут через промежуточные города.
+     */
     private void buildOptimalRoute() {
         String from = startField.getText().trim();
         String to = endField.getText().trim();
@@ -363,18 +457,22 @@ public class MainController {
         }
 
         try {
+            // Геокодирование адресов
             City start = mapService.geocode(from);
             City end = mapService.geocode(to);
             logger.log(Level.FINE, "Координаты получены: старт={0}, конец={1}", new Object[]{start, end});
 
+            // Поиск промежуточных городов
             List<City> intermediateCities = cityService.findIntermediateCities(start, end);
             logger.log(Level.FINE, "Найдено промежуточных городов: {0}", intermediateCities.size());
 
+            // Построение полного маршрута
             List<City> fullRoute = new ArrayList<>();
             fullRoute.add(start);
             fullRoute.addAll(intermediateCities);
             fullRoute.add(end);
 
+            // Отображение маршрута на карте
             mapService.displayRouteWithCities(webView, start, end, intermediateCities);
             showCitiesList(intermediateCities);
             logger.log(Level.INFO, "Оптимальный маршрут построен через {0} городов", intermediateCities.size());
@@ -384,6 +482,9 @@ public class MainController {
         }
     }
 
+    /*
+     * Отображает список промежуточных городов в интерфейсе.
+     */
     private void showCitiesList(List<City> cities) {
         logger.log(Level.FINE, "Отображение списка городов (количество: {0})", cities.size());
         citiesListContainer.getChildren().clear();
@@ -402,6 +503,9 @@ public class MainController {
         }
     }
 
+    /*
+     * Показывает диалоговое окно с сообщением.
+     */
     private void showAlert(String title, String header, String content) {
         logger.log(Level.INFO, "Показ предупреждения: {0} - {1} - {2}",
                 new Object[]{title, header, content});
@@ -412,6 +516,9 @@ public class MainController {
         alert.showAndWait();
     }
 
+    /*
+     * Завершает работу контроллера, освобождая ресурсы.
+     */
     public void shutdown() {
         logger.log(Level.INFO, "Завершение работы контроллера");
         try {
