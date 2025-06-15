@@ -1,3 +1,8 @@
+/*
+ * Реализация TripDAO для работы с SQLite базой данных.
+ * Обеспечивает CRUD операции для поездок и связанных с ними отзывов.
+ * Использует JDBC для взаимодействия с базой данных.
+ */
 package org.example.kurstrips.dao.impl;
 
 import org.example.kurstrips.dao.TripDAO;
@@ -18,16 +23,19 @@ public class SQLiteTripDAO implements TripDAO {
     private Connection conn;
     private static final Dotenv dotenv = Dotenv.configure().load();
 
+    /*
+     * Инициализирует подключение к базе данных SQLite.
+     * Параметры подключения загружаются из .env файла.
+     * Создает необходимые таблицы, если они не существуют.
+     */
     public SQLiteTripDAO() {
         logger.log(Level.INFO, LogUtil.getMessage("dao.init"));
         try {
-            // Загрузка параметров из .env файла
             String driver = dotenv.get("DB_DRIVER", "org.sqlite.JDBC");
             String url = dotenv.get("DB_URL", "jdbc:sqlite:trips.db");
             String user = dotenv.get("DB_USER");
             String password = dotenv.get("DB_PASSWORD");
 
-            // Подстановка user.dir в URL если нужно
             url = url.replace("${user.dir}", System.getProperty("user.dir"));
 
             Class.forName(driver);
@@ -50,6 +58,10 @@ public class SQLiteTripDAO implements TripDAO {
         }
     }
 
+    /*
+     * Создает таблицы trips и reviews в базе данных, если они не существуют.
+     * Таблица reviews связана с trips через внешний ключ trip_id.
+     */
     private void initializeDatabase() {
         String createTripsTable = """
             CREATE TABLE IF NOT EXISTS trips (
@@ -81,6 +93,11 @@ public class SQLiteTripDAO implements TripDAO {
         }
     }
 
+    /*
+     * Получает все поездки из базы данных вместе с связанными отзывами.
+     * Возвращает список объектов Trip, отсортированный по дате начала поездки (новые сначала).
+     * Для поездок без отзывов поле review будет равно null.
+     */
     @Override
     public List<Trip> getAllTrips() {
         logger.log(Level.INFO, LogUtil.getMessage("dao.get.trips"));
@@ -105,7 +122,7 @@ public class SQLiteTripDAO implements TripDAO {
                 if (rs.getInt("review_id") != 0) {
                     trip.setReview(new Review(
                             rs.getInt("review_id"),
-                            rs.getInt("review_trip_id"),  // Используем правильное имя столбца
+                            rs.getInt("review_trip_id"),
                             rs.getInt("rating"),
                             rs.getString("comment")
                     ));
@@ -122,6 +139,11 @@ public class SQLiteTripDAO implements TripDAO {
         return trips;
     }
 
+    /*
+     * Добавляет новую поездку в базу данных.
+     * Устанавливает сгенерированный ID в переданный объект Trip.
+     * Статус поездки рассчитывается автоматически на основе дат.
+     */
     @Override
     public void addTrip(Trip trip) {
         String sql = "INSERT INTO trips (from_city, to_city, start_date, end_date, budget, status) " +
@@ -147,6 +169,10 @@ public class SQLiteTripDAO implements TripDAO {
         }
     }
 
+    /*
+     * Обновляет существующую поездку в базе данных.
+     * Обновляет все поля поездки, включая статус.
+     */
     @Override
     public void updateTrip(Trip trip) {
         String sql = "UPDATE trips SET from_city = ?, to_city = ?, start_date = ?, " +
@@ -167,9 +193,12 @@ public class SQLiteTripDAO implements TripDAO {
         }
     }
 
+    /*
+     * Удаляет поездку и все связанные с ней отзывы.
+     * Сначала удаляет отзывы, затем саму поездку.
+     */
     @Override
     public void deleteTrip(int id) {
-        // Сначала удаляем связанные отзывы
         String deleteReviewsSql = "DELETE FROM reviews WHERE trip_id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(deleteReviewsSql)) {
             pstmt.setInt(1, id);
@@ -180,7 +209,6 @@ public class SQLiteTripDAO implements TripDAO {
             return;
         }
 
-        // Затем удаляем саму поездку
         String deleteTripSql = "DELETE FROM trips WHERE id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(deleteTripSql)) {
             pstmt.setInt(1, id);
@@ -191,6 +219,10 @@ public class SQLiteTripDAO implements TripDAO {
         }
     }
 
+    /*
+     * Добавляет отзыв для указанной поездки.
+     * Связь между отзывом и поездкой устанавливается через trip_id.
+     */
     @Override
     public void addReview(int tripId, int rating, String comment) {
         String sql = "INSERT INTO reviews (trip_id, rating, comment) VALUES (?, ?, ?)";
@@ -206,6 +238,10 @@ public class SQLiteTripDAO implements TripDAO {
         }
     }
 
+    /*
+     * Обновляет существующий отзыв.
+     * Изменяет оценку и комментарий отзыва с указанным ID.
+     */
     @Override
     public void updateReview(int reviewId, int rating, String comment) throws SQLException {
         String sql = "UPDATE reviews SET rating = ?, comment = ? WHERE id = ?";
@@ -218,6 +254,10 @@ public class SQLiteTripDAO implements TripDAO {
         }
     }
 
+    /*
+     * Получает поездку по ID вместе с связанным отзывом (если есть).
+     * Возвращает null, если поездка с указанным ID не найдена.
+     */
     @Override
     public Trip getTripById(int id) {
         String sql = """
@@ -251,19 +291,22 @@ public class SQLiteTripDAO implements TripDAO {
         return null;
     }
 
+    /*
+     * Получает поездки в указанном диапазоне дат.
+     * Если startDate или endDate равны null, соответствующие условия фильтрации не применяются.
+     * Возвращает список поездок, отсортированный по дате начала (новые сначала).
+     */
     @Override
     public List<Trip> getTripsByDateRange(LocalDate startDate, LocalDate endDate) throws SQLException {
         List<Trip> trips = new ArrayList<>();
         if (conn == null) return trips;
 
-        // Базовый запрос с JOIN для отзывов
         StringBuilder sql = new StringBuilder("""
         SELECT t.id, t.from_city, t.to_city, t.start_date, t.end_date, t.budget, t.status,
                r.id as review_id, r.trip_id as review_trip_id, r.rating, r.comment 
         FROM trips t LEFT JOIN reviews r ON t.id = r.trip_id
         WHERE 1=1""");
 
-        // Добавляем условия фильтрации
         if (startDate != null) {
             sql.append(" AND t.start_date >= '").append(startDate).append("'");
         }
@@ -292,6 +335,10 @@ public class SQLiteTripDAO implements TripDAO {
         return trips;
     }
 
+    /*
+     * Преобразует строку ResultSet в объект Trip.
+     * Не заполняет поле review - это должно быть сделано отдельно.
+     */
     private Trip mapResultSetToTrip(ResultSet rs) throws SQLException {
         Trip trip = new Trip(
                 rs.getInt("id"),
@@ -304,6 +351,10 @@ public class SQLiteTripDAO implements TripDAO {
         return trip;
     }
 
+    /*
+     * Закрывает соединение с базой данных.
+     * Должен быть вызван перед уничтожением объекта DAO.
+     */
     public void close() {
         logger.log(Level.INFO, LogUtil.getMessage("dao.close"));
         try {

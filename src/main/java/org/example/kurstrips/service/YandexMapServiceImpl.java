@@ -1,3 +1,11 @@
+/*
+ * Сервис для работы с Яндекс.Картами
+ * Реализует интерфейс MapService и предоставляет функционал:
+ * - Инициализация карты в WebView
+ * - Построение маршрутов между точками
+ * - Добавление меток на карту
+ * - Геокодирование адресов
+ */
 package org.example.kurstrips.service;
 
 import io.github.cdimascio.dotenv.Dotenv;
@@ -12,10 +20,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.example.kurstrips.util.LogUtil;
 
+/*
+ * Реализация сервиса работы с Яндекс.Картами
+ */
 public class YandexMapServiceImpl implements MapService {
     private static final Logger logger = LogUtil.getLogger(YandexMapServiceImpl.class);
     private final String API_KEY;
 
+    /*
+     * Конструктор сервиса
+     * Загружает API ключ из .env файла
+     * @throws IllegalStateException если ключ не найден
+     */
     public YandexMapServiceImpl() {
         // Загружаем переменные окружения из .env файла
         Dotenv dotenv = Dotenv.configure()
@@ -32,10 +48,18 @@ public class YandexMapServiceImpl implements MapService {
         logger.log(Level.INFO, "Yandex Maps API key loaded successfully");
     }
 
+    /*
+     * Получение API ключа
+     * @return API ключ для Яндекс.Карт
+     */
     public String getApiKey() {
         return API_KEY;
     }
 
+    /*
+     * Инициализация карты в WebView
+     * @param webView компонент WebView для отображения карты
+     */
     @Override
     public void initializeMap(WebView webView) {
         logger.log(Level.INFO, "Начало инициализации карты в WebView");
@@ -85,6 +109,12 @@ public class YandexMapServiceImpl implements MapService {
         }
     }
 
+    /*
+     * Построение маршрута между двумя точками
+     * @param webView компонент WebView с картой
+     * @param from начальный адрес
+     * @param to конечный адрес
+     */
     @Override
     public void buildRoute(WebView webView, String from, String to) {
         logger.log(Level.INFO, "Начало построения маршрута от '{0}' до '{1}'", new Object[]{from, to});
@@ -151,6 +181,10 @@ public class YandexMapServiceImpl implements MapService {
         }
     }
 
+    /*
+     * Добавление тестового маршрута (Москва - Санкт-Петербург)
+     * @param webView компонент WebView с картой
+     */
     @Override
     public void addTestRoute(WebView webView) {
         logger.log(Level.INFO, "Добавление тестового маршрута Москва-Санкт-Петербург");
@@ -194,6 +228,10 @@ public class YandexMapServiceImpl implements MapService {
         }
     }
 
+    /*
+     * Добавление тестовой метки на карту
+     * @param webView компонент WebView с картой
+     */
     @Override
     public void addTestMarker(WebView webView) {
         logger.log(Level.INFO, "Добавление тестовой метки на карту");
@@ -216,6 +254,13 @@ public class YandexMapServiceImpl implements MapService {
         }
     }
 
+    /*
+     * Отображение маршрута через промежуточные города
+     * @param webView компонент WebView с картой
+     * @param start начальный город
+     * @param end конечный город
+     * @param routeCities список промежуточных городов
+     */
     @Override
     public void displayRouteWithCities(WebView webView, City start, City end, List<City> routeCities) {
         logger.log(Level.INFO, "Отображение маршрута через {0} промежуточных городов", routeCities.size());
@@ -284,11 +329,18 @@ public class YandexMapServiceImpl implements MapService {
         }
     }
 
+    /*
+     * Геокодирование адреса (преобразование в координаты)
+     * @param address адрес для геокодирования
+     * @return объект City с координатами
+     * @throws Exception если адрес не распознан или произошла ошибка
+     */
     @Override
     public City geocode(String address) throws Exception {
         logger.log(Level.INFO, "Начало геокодирования адреса: {0}", address);
         String lowerAddress = address.toLowerCase();
 
+        // Проверка известных городов (локальный кэш)
         if (lowerAddress.contains("москва")) {
             logger.log(Level.FINE, "Адрес распознан как Москва");
             return new City("Москва", 55.755814, 37.617635);
@@ -326,6 +378,7 @@ public class YandexMapServiceImpl implements MapService {
             return new City("Мытищи", 55.910000, 37.730000);
         }
 
+        // Если адрес не в локальном кэше - запрос к API Яндекс.Карт
         try {
             String url = String.format(
                     "https://geocode-maps.yandex.ru/1.x/?apikey=%s&format=json&geocode=%s",
